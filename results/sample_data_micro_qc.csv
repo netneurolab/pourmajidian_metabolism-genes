@@ -1,0 +1,335 @@
+column_num,donor_id,donor_name,age,gender,structure_id,structure_acronym,structure_name,age_group,age_group2,period,ctx,network,age_days
+3,13058,H376.IIA.51,8 pcw,M,10173,DFC,dorsolateral prefrontal cortex,fetal,early_fetal,p2,cortex,front,56.0
+6,13058,H376.IIA.51,8 pcw,M,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",fetal,early_fetal,p2,cortex,temp,56.0
+8,13058,H376.IIA.51,8 pcw,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,fetal,early_fetal,p2,cortex,front,56.0
+12,13058,H376.IIA.51,8 pcw,M,10194,OFC,orbital frontal cortex,fetal,early_fetal,p2,cortex,front,56.0
+14,13058,H376.IIA.51,8 pcw,M,10243,STC,posterior (caudal) superior temporal cortex (area 22c),fetal,early_fetal,p2,cortex,temp,56.0
+16,13058,H376.IIA.51,8 pcw,M,10185,VFC,ventrolateral prefrontal cortex,fetal,early_fetal,p2,cortex,front,56.0
+19,12833,H376.IIA.50,9 pcw,M,10173,DFC,dorsolateral prefrontal cortex,fetal,early_fetal,p2,cortex,front,63.0
+23,12833,H376.IIA.50,9 pcw,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,fetal,early_fetal,p2,cortex,front,63.0
+27,12833,H376.IIA.50,9 pcw,M,10194,OFC,orbital frontal cortex,fetal,early_fetal,p2,cortex,front,63.0
+31,12835,H376.IIB.50,12 pcw,F,10236,A1C,primary auditory cortex (core),fetal,early_fetal,p3,cortex,temp,84.0
+33,12835,H376.IIB.50,12 pcw,F,10173,DFC,dorsolateral prefrontal cortex,fetal,early_fetal,p3,cortex,front,84.0
+35,12835,H376.IIB.50,12 pcw,F,10225,IPC,posteroventral (inferior) parietal cortex,fetal,early_fetal,p3,cortex,par,84.0
+36,12835,H376.IIB.50,12 pcw,F,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",fetal,early_fetal,p3,cortex,temp,84.0
+37,12835,H376.IIB.50,12 pcw,F,10163,M1C,"primary motor cortex (area M1, area 4)",fetal,early_fetal,p3,cortex,front,84.0
+39,12835,H376.IIB.50,12 pcw,F,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,fetal,early_fetal,p3,cortex,front,84.0
+40,12835,H376.IIB.50,12 pcw,F,10194,OFC,orbital frontal cortex,fetal,early_fetal,p3,cortex,front,84.0
+41,12835,H376.IIB.50,12 pcw,F,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",fetal,early_fetal,p3,cortex,par,84.0
+42,12835,H376.IIB.50,12 pcw,F,10243,STC,posterior (caudal) superior temporal cortex (area 22c),fetal,early_fetal,p3,cortex,temp,84.0
+44,12835,H376.IIB.50,12 pcw,F,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",fetal,early_fetal,p3,cortex,occ,84.0
+45,12835,H376.IIB.50,12 pcw,F,10185,VFC,ventrolateral prefrontal cortex,fetal,early_fetal,p3,cortex,front,84.0
+46,12960,H376.IIB.51,12 pcw,F,10236,A1C,primary auditory cortex (core),fetal,early_fetal,p3,cortex,temp,84.0
+49,12960,H376.IIB.51,12 pcw,F,10173,DFC,dorsolateral prefrontal cortex,fetal,early_fetal,p3,cortex,front,84.0
+51,12960,H376.IIB.51,12 pcw,F,10225,IPC,posteroventral (inferior) parietal cortex,fetal,early_fetal,p3,cortex,par,84.0
+52,12960,H376.IIB.51,12 pcw,F,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",fetal,early_fetal,p3,cortex,temp,84.0
+53,12960,H376.IIB.51,12 pcw,F,10163,M1C,"primary motor cortex (area M1, area 4)",fetal,early_fetal,p3,cortex,front,84.0
+55,12960,H376.IIB.51,12 pcw,F,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,fetal,early_fetal,p3,cortex,front,84.0
+56,12960,H376.IIB.51,12 pcw,F,10194,OFC,orbital frontal cortex,fetal,early_fetal,p3,cortex,front,84.0
+57,12960,H376.IIB.51,12 pcw,F,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",fetal,early_fetal,p3,cortex,par,84.0
+58,12960,H376.IIB.51,12 pcw,F,10243,STC,posterior (caudal) superior temporal cortex (area 22c),fetal,early_fetal,p3,cortex,temp,84.0
+60,12960,H376.IIB.51,12 pcw,F,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",fetal,early_fetal,p3,cortex,occ,84.0
+61,12960,H376.IIB.51,12 pcw,F,10185,VFC,ventrolateral prefrontal cortex,fetal,early_fetal,p3,cortex,front,84.0
+62,13060,H376.IIB.52,12 pcw,F,10236,A1C,primary auditory cortex (core),fetal,early_fetal,p3,cortex,temp,84.0
+65,13060,H376.IIB.52,12 pcw,F,10173,DFC,dorsolateral prefrontal cortex,fetal,early_fetal,p3,cortex,front,84.0
+67,13060,H376.IIB.52,12 pcw,F,10225,IPC,posteroventral (inferior) parietal cortex,fetal,early_fetal,p3,cortex,par,84.0
+68,13060,H376.IIB.52,12 pcw,F,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",fetal,early_fetal,p3,cortex,temp,84.0
+69,13060,H376.IIB.52,12 pcw,F,10163,M1C,"primary motor cortex (area M1, area 4)",fetal,early_fetal,p3,cortex,front,84.0
+71,13060,H376.IIB.52,12 pcw,F,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,fetal,early_fetal,p3,cortex,front,84.0
+72,13060,H376.IIB.52,12 pcw,F,10194,OFC,orbital frontal cortex,fetal,early_fetal,p3,cortex,front,84.0
+73,13060,H376.IIB.52,12 pcw,F,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",fetal,early_fetal,p3,cortex,par,84.0
+74,13060,H376.IIB.52,12 pcw,F,10243,STC,posterior (caudal) superior temporal cortex (area 22c),fetal,early_fetal,p3,cortex,temp,84.0
+76,13060,H376.IIB.52,12 pcw,F,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",fetal,early_fetal,p3,cortex,occ,84.0
+77,13060,H376.IIB.52,12 pcw,F,10185,VFC,ventrolateral prefrontal cortex,fetal,early_fetal,p3,cortex,front,84.0
+78,12820,H376.IIIA.50,13 pcw,M,10236,A1C,primary auditory cortex (core),fetal,mid_fetal,p4,cortex,temp,91.0
+80,12820,H376.IIIA.50,13 pcw,M,10173,DFC,dorsolateral prefrontal cortex,fetal,mid_fetal,p4,cortex,front,91.0
+82,12820,H376.IIIA.50,13 pcw,M,10225,IPC,posteroventral (inferior) parietal cortex,fetal,mid_fetal,p4,cortex,par,91.0
+83,12820,H376.IIIA.50,13 pcw,M,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",fetal,mid_fetal,p4,cortex,temp,91.0
+84,12820,H376.IIIA.50,13 pcw,M,10163,M1C,"primary motor cortex (area M1, area 4)",fetal,mid_fetal,p4,cortex,front,91.0
+85,12820,H376.IIIA.50,13 pcw,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,fetal,mid_fetal,p4,cortex,front,91.0
+86,12820,H376.IIIA.50,13 pcw,M,10194,OFC,orbital frontal cortex,fetal,mid_fetal,p4,cortex,front,91.0
+87,12820,H376.IIIA.50,13 pcw,M,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",fetal,mid_fetal,p4,cortex,par,91.0
+88,12820,H376.IIIA.50,13 pcw,M,10243,STC,posterior (caudal) superior temporal cortex (area 22c),fetal,mid_fetal,p4,cortex,temp,91.0
+90,12820,H376.IIIA.50,13 pcw,M,10185,VFC,ventrolateral prefrontal cortex,fetal,mid_fetal,p4,cortex,front,91.0
+91,12834,H376.IIIA.51,13 pcw,F,10236,A1C,primary auditory cortex (core),fetal,mid_fetal,p4,cortex,temp,91.0
+93,12834,H376.IIIA.51,13 pcw,F,10173,DFC,dorsolateral prefrontal cortex,fetal,mid_fetal,p4,cortex,front,91.0
+95,12834,H376.IIIA.51,13 pcw,F,10225,IPC,posteroventral (inferior) parietal cortex,fetal,mid_fetal,p4,cortex,par,91.0
+96,12834,H376.IIIA.51,13 pcw,F,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",fetal,mid_fetal,p4,cortex,temp,91.0
+97,12834,H376.IIIA.51,13 pcw,F,10163,M1C,"primary motor cortex (area M1, area 4)",fetal,mid_fetal,p4,cortex,front,91.0
+99,12834,H376.IIIA.51,13 pcw,F,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,fetal,mid_fetal,p4,cortex,front,91.0
+100,12834,H376.IIIA.51,13 pcw,F,10194,OFC,orbital frontal cortex,fetal,mid_fetal,p4,cortex,front,91.0
+101,12834,H376.IIIA.51,13 pcw,F,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",fetal,mid_fetal,p4,cortex,par,91.0
+102,12834,H376.IIIA.51,13 pcw,F,10243,STC,posterior (caudal) superior temporal cortex (area 22c),fetal,mid_fetal,p4,cortex,temp,91.0
+104,12834,H376.IIIA.51,13 pcw,F,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",fetal,mid_fetal,p4,cortex,occ,91.0
+105,12834,H376.IIIA.51,13 pcw,F,10185,VFC,ventrolateral prefrontal cortex,fetal,mid_fetal,p4,cortex,front,91.0
+106,12888,H376.IIIA.52,13 pcw,M,10236,A1C,primary auditory cortex (core),fetal,mid_fetal,p4,cortex,temp,91.0
+109,12888,H376.IIIA.52,13 pcw,M,10173,DFC,dorsolateral prefrontal cortex,fetal,mid_fetal,p4,cortex,front,91.0
+111,12888,H376.IIIA.52,13 pcw,M,10225,IPC,posteroventral (inferior) parietal cortex,fetal,mid_fetal,p4,cortex,par,91.0
+112,12888,H376.IIIA.52,13 pcw,M,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",fetal,mid_fetal,p4,cortex,temp,91.0
+113,12888,H376.IIIA.52,13 pcw,M,10163,M1C,"primary motor cortex (area M1, area 4)",fetal,mid_fetal,p4,cortex,front,91.0
+114,12888,H376.IIIA.52,13 pcw,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,fetal,mid_fetal,p4,cortex,front,91.0
+115,12888,H376.IIIA.52,13 pcw,M,10194,OFC,orbital frontal cortex,fetal,mid_fetal,p4,cortex,front,91.0
+116,12888,H376.IIIA.52,13 pcw,M,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",fetal,mid_fetal,p4,cortex,par,91.0
+117,12888,H376.IIIA.52,13 pcw,M,10243,STC,posterior (caudal) superior temporal cortex (area 22c),fetal,mid_fetal,p4,cortex,temp,91.0
+119,12888,H376.IIIA.52,13 pcw,M,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",fetal,mid_fetal,p4,cortex,occ,91.0
+120,12888,H376.IIIA.52,13 pcw,M,10185,VFC,ventrolateral prefrontal cortex,fetal,mid_fetal,p4,cortex,front,91.0
+121,12287,H376.IIIB.50,16 pcw,M,10236,A1C,primary auditory cortex (core),fetal,mid_fetal,p5,cortex,temp,112.0
+122,12287,H376.IIIB.50,16 pcw,M,10173,DFC,dorsolateral prefrontal cortex,fetal,mid_fetal,p5,cortex,front,112.0
+124,12287,H376.IIIB.50,16 pcw,M,10225,IPC,posteroventral (inferior) parietal cortex,fetal,mid_fetal,p5,cortex,par,112.0
+126,12287,H376.IIIB.50,16 pcw,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,fetal,mid_fetal,p5,cortex,front,112.0
+128,12287,H376.IIIB.50,16 pcw,M,10243,STC,posterior (caudal) superior temporal cortex (area 22c),fetal,mid_fetal,p5,cortex,temp,112.0
+130,12287,H376.IIIB.50,16 pcw,M,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",fetal,mid_fetal,p5,cortex,occ,112.0
+131,12287,H376.IIIB.50,16 pcw,M,10185,VFC,ventrolateral prefrontal cortex,fetal,mid_fetal,p5,cortex,front,112.0
+133,12837,H376.IIIB.51,16 pcw,M,10173,DFC,dorsolateral prefrontal cortex,fetal,mid_fetal,p5,cortex,front,112.0
+135,12837,H376.IIIB.51,16 pcw,M,10225,IPC,posteroventral (inferior) parietal cortex,fetal,mid_fetal,p5,cortex,par,112.0
+136,12837,H376.IIIB.51,16 pcw,M,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",fetal,mid_fetal,p5,cortex,temp,112.0
+137,12837,H376.IIIB.51,16 pcw,M,10163,M1C,"primary motor cortex (area M1, area 4)",fetal,mid_fetal,p5,cortex,front,112.0
+139,12837,H376.IIIB.51,16 pcw,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,fetal,mid_fetal,p5,cortex,front,112.0
+140,12837,H376.IIIB.51,16 pcw,M,10194,OFC,orbital frontal cortex,fetal,mid_fetal,p5,cortex,front,112.0
+141,12837,H376.IIIB.51,16 pcw,M,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",fetal,mid_fetal,p5,cortex,par,112.0
+142,12837,H376.IIIB.51,16 pcw,M,10243,STC,posterior (caudal) superior temporal cortex (area 22c),fetal,mid_fetal,p5,cortex,temp,112.0
+144,12837,H376.IIIB.51,16 pcw,M,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",fetal,mid_fetal,p5,cortex,occ,112.0
+145,12837,H376.IIIB.51,16 pcw,M,10185,VFC,ventrolateral prefrontal cortex,fetal,mid_fetal,p5,cortex,front,112.0
+146,12879,H376.IIIB.52,16 pcw,M,10236,A1C,primary auditory cortex (core),fetal,mid_fetal,p5,cortex,temp,112.0
+148,12879,H376.IIIB.52,16 pcw,M,10173,DFC,dorsolateral prefrontal cortex,fetal,mid_fetal,p5,cortex,front,112.0
+150,12879,H376.IIIB.52,16 pcw,M,10225,IPC,posteroventral (inferior) parietal cortex,fetal,mid_fetal,p5,cortex,par,112.0
+151,12879,H376.IIIB.52,16 pcw,M,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",fetal,mid_fetal,p5,cortex,temp,112.0
+153,12879,H376.IIIB.52,16 pcw,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,fetal,mid_fetal,p5,cortex,front,112.0
+155,12879,H376.IIIB.52,16 pcw,M,10194,OFC,orbital frontal cortex,fetal,mid_fetal,p5,cortex,front,112.0
+156,12879,H376.IIIB.52,16 pcw,M,10243,STC,posterior (caudal) superior temporal cortex (area 22c),fetal,mid_fetal,p5,cortex,temp,112.0
+158,12879,H376.IIIB.52,16 pcw,M,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",fetal,mid_fetal,p5,cortex,occ,112.0
+159,12879,H376.IIIB.52,16 pcw,M,10185,VFC,ventrolateral prefrontal cortex,fetal,mid_fetal,p5,cortex,front,112.0
+160,12880,H376.IIIB.53,17 pcw,F,10236,A1C,primary auditory cortex (core),fetal,mid_fetal,p5,cortex,temp,119.0
+163,12880,H376.IIIB.53,17 pcw,F,10173,DFC,dorsolateral prefrontal cortex,fetal,mid_fetal,p5,cortex,front,119.0
+165,12880,H376.IIIB.53,17 pcw,F,10225,IPC,posteroventral (inferior) parietal cortex,fetal,mid_fetal,p5,cortex,par,119.0
+167,12880,H376.IIIB.53,17 pcw,F,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,fetal,mid_fetal,p5,cortex,front,119.0
+169,12880,H376.IIIB.53,17 pcw,F,10194,OFC,orbital frontal cortex,fetal,mid_fetal,p5,cortex,front,119.0
+170,12880,H376.IIIB.53,17 pcw,F,10243,STC,posterior (caudal) superior temporal cortex (area 22c),fetal,mid_fetal,p5,cortex,temp,119.0
+172,12880,H376.IIIB.53,17 pcw,F,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",fetal,mid_fetal,p5,cortex,occ,119.0
+173,12880,H376.IIIB.53,17 pcw,F,10185,VFC,ventrolateral prefrontal cortex,fetal,mid_fetal,p5,cortex,front,119.0
+174,12885,H376.IV.53,19 pcw,F,10236,A1C,primary auditory cortex (core),fetal,mid_fetal,p6,cortex,temp,133.0
+175,12885,H376.IV.53,19 pcw,F,10173,DFC,dorsolateral prefrontal cortex,fetal,mid_fetal,p6,cortex,front,133.0
+177,12885,H376.IV.53,19 pcw,F,10225,IPC,posteroventral (inferior) parietal cortex,fetal,mid_fetal,p6,cortex,par,133.0
+179,12885,H376.IV.53,19 pcw,F,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,fetal,mid_fetal,p6,cortex,front,133.0
+181,12885,H376.IV.53,19 pcw,F,10243,STC,posterior (caudal) superior temporal cortex (area 22c),fetal,mid_fetal,p6,cortex,temp,133.0
+183,12885,H376.IV.53,19 pcw,F,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",fetal,mid_fetal,p6,cortex,occ,133.0
+184,12885,H376.IV.53,19 pcw,F,10185,VFC,ventrolateral prefrontal cortex,fetal,mid_fetal,p6,cortex,front,133.0
+185,12365,H376.IV.51,21 pcw,F,10236,A1C,primary auditory cortex (core),fetal,mid_fetal,p6,cortex,temp,147.0
+188,12365,H376.IV.51,21 pcw,F,10173,DFC,dorsolateral prefrontal cortex,fetal,mid_fetal,p6,cortex,front,147.0
+190,12365,H376.IV.51,21 pcw,F,10225,IPC,posteroventral (inferior) parietal cortex,fetal,mid_fetal,p6,cortex,par,147.0
+191,12365,H376.IV.51,21 pcw,F,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",fetal,mid_fetal,p6,cortex,temp,147.0
+192,12365,H376.IV.51,21 pcw,F,10163,M1C,"primary motor cortex (area M1, area 4)",fetal,mid_fetal,p6,cortex,front,147.0
+194,12365,H376.IV.51,21 pcw,F,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,fetal,mid_fetal,p6,cortex,front,147.0
+195,12365,H376.IV.51,21 pcw,F,10194,OFC,orbital frontal cortex,fetal,mid_fetal,p6,cortex,front,147.0
+196,12365,H376.IV.51,21 pcw,F,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",fetal,mid_fetal,p6,cortex,par,147.0
+197,12365,H376.IV.51,21 pcw,F,10243,STC,posterior (caudal) superior temporal cortex (area 22c),fetal,mid_fetal,p6,cortex,temp,147.0
+199,12365,H376.IV.51,21 pcw,F,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",fetal,mid_fetal,p6,cortex,occ,147.0
+200,12365,H376.IV.51,21 pcw,F,10185,VFC,ventrolateral prefrontal cortex,fetal,mid_fetal,p6,cortex,front,147.0
+201,12886,H376.IV.54,21 pcw,M,10236,A1C,primary auditory cortex (core),fetal,mid_fetal,p6,cortex,temp,147.0
+204,12886,H376.IV.54,21 pcw,M,10173,DFC,dorsolateral prefrontal cortex,fetal,mid_fetal,p6,cortex,front,147.0
+206,12886,H376.IV.54,21 pcw,M,10225,IPC,posteroventral (inferior) parietal cortex,fetal,mid_fetal,p6,cortex,par,147.0
+207,12886,H376.IV.54,21 pcw,M,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",fetal,mid_fetal,p6,cortex,temp,147.0
+208,12886,H376.IV.54,21 pcw,M,10163,M1C,"primary motor cortex (area M1, area 4)",fetal,mid_fetal,p6,cortex,front,147.0
+210,12886,H376.IV.54,21 pcw,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,fetal,mid_fetal,p6,cortex,front,147.0
+211,12886,H376.IV.54,21 pcw,M,10194,OFC,orbital frontal cortex,fetal,mid_fetal,p6,cortex,front,147.0
+212,12886,H376.IV.54,21 pcw,M,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",fetal,mid_fetal,p6,cortex,par,147.0
+213,12886,H376.IV.54,21 pcw,M,10243,STC,posterior (caudal) superior temporal cortex (area 22c),fetal,mid_fetal,p6,cortex,temp,147.0
+215,12886,H376.IV.54,21 pcw,M,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",fetal,mid_fetal,p6,cortex,occ,147.0
+216,12886,H376.IV.54,21 pcw,M,10185,VFC,ventrolateral prefrontal cortex,fetal,mid_fetal,p6,cortex,front,147.0
+217,12288,H376.IV.50,24 pcw,M,10236,A1C,primary auditory cortex (core),fetal,late_fetal,p7,cortex,temp,168.0
+220,12288,H376.IV.50,24 pcw,M,10173,DFC,dorsolateral prefrontal cortex,fetal,late_fetal,p7,cortex,front,168.0
+222,12288,H376.IV.50,24 pcw,M,10225,IPC,posteroventral (inferior) parietal cortex,fetal,late_fetal,p7,cortex,par,168.0
+223,12288,H376.IV.50,24 pcw,M,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",fetal,late_fetal,p7,cortex,temp,168.0
+224,12288,H376.IV.50,24 pcw,M,10163,M1C,"primary motor cortex (area M1, area 4)",fetal,late_fetal,p7,cortex,front,168.0
+226,12288,H376.IV.50,24 pcw,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,fetal,late_fetal,p7,cortex,front,168.0
+227,12288,H376.IV.50,24 pcw,M,10194,OFC,orbital frontal cortex,fetal,late_fetal,p7,cortex,front,168.0
+228,12288,H376.IV.50,24 pcw,M,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",fetal,late_fetal,p7,cortex,par,168.0
+229,12288,H376.IV.50,24 pcw,M,10243,STC,posterior (caudal) superior temporal cortex (area 22c),fetal,late_fetal,p7,cortex,temp,168.0
+231,12288,H376.IV.50,24 pcw,M,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",fetal,late_fetal,p7,cortex,occ,168.0
+232,12288,H376.IV.50,24 pcw,M,10185,VFC,ventrolateral prefrontal cortex,fetal,late_fetal,p7,cortex,front,168.0
+233,12948,H376.V.51,25 pcw,F,10236,A1C,primary auditory cortex (core),fetal,late_fetal,p7,cortex,temp,175.0
+234,12948,H376.V.51,25 pcw,F,10243,STC,posterior (caudal) superior temporal cortex (area 22c),fetal,late_fetal,p7,cortex,temp,175.0
+237,12949,H376.V.52,26 pcw,F,10173,DFC,dorsolateral prefrontal cortex,fetal,late_fetal,p7,cortex,front,182.0
+238,12949,H376.V.52,26 pcw,F,10243,STC,posterior (caudal) superior temporal cortex (area 22c),fetal,late_fetal,p7,cortex,temp,182.0
+239,12949,H376.V.52,26 pcw,F,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",fetal,late_fetal,p7,cortex,occ,182.0
+240,12296,H376.VI.50,4 mos,M,10236,A1C,primary auditory cortex (core),infant,infancy,p8,cortex,temp,401.72
+243,12296,H376.VI.50,4 mos,M,10173,DFC,dorsolateral prefrontal cortex,infant,infancy,p8,cortex,front,401.72
+245,12296,H376.VI.50,4 mos,M,10225,IPC,posteroventral (inferior) parietal cortex,infant,infancy,p8,cortex,par,401.72
+246,12296,H376.VI.50,4 mos,M,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",infant,infancy,p8,cortex,temp,401.72
+247,12296,H376.VI.50,4 mos,M,10163,M1C,"primary motor cortex (area M1, area 4)",infant,infancy,p8,cortex,front,401.72
+249,12296,H376.VI.50,4 mos,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,infant,infancy,p8,cortex,front,401.72
+250,12296,H376.VI.50,4 mos,M,10194,OFC,orbital frontal cortex,infant,infancy,p8,cortex,front,401.72
+251,12296,H376.VI.50,4 mos,M,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",infant,infancy,p8,cortex,par,401.72
+252,12296,H376.VI.50,4 mos,M,10243,STC,posterior (caudal) superior temporal cortex (area 22c),infant,infancy,p8,cortex,temp,401.72
+254,12296,H376.VI.50,4 mos,M,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",infant,infancy,p8,cortex,occ,401.72
+255,12296,H376.VI.50,4 mos,M,10185,VFC,ventrolateral prefrontal cortex,infant,infancy,p8,cortex,front,401.72
+257,12977,H376.VII.51,10 mos,M,10173,DFC,dorsolateral prefrontal cortex,infant,infancy,p9,cortex,front,584.3
+258,12977,H376.VII.51,10 mos,M,10225,IPC,posteroventral (inferior) parietal cortex,infant,infancy,p9,cortex,par,584.3
+259,12977,H376.VII.51,10 mos,M,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",infant,infancy,p9,cortex,temp,584.3
+261,12977,H376.VII.51,10 mos,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,infant,infancy,p9,cortex,front,584.3
+262,12977,H376.VII.51,10 mos,M,10194,OFC,orbital frontal cortex,infant,infancy,p9,cortex,front,584.3
+263,12977,H376.VII.51,10 mos,M,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",infant,infancy,p9,cortex,par,584.3
+264,12977,H376.VII.51,10 mos,M,10243,STC,posterior (caudal) superior temporal cortex (area 22c),infant,infancy,p9,cortex,temp,584.3
+265,12977,H376.VII.51,10 mos,M,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",infant,infancy,p9,cortex,occ,584.3
+266,12977,H376.VII.51,10 mos,M,10185,VFC,ventrolateral prefrontal cortex,infant,infancy,p9,cortex,front,584.3
+267,12830,H376.VIII.51,1 yrs,F,10236,A1C,primary auditory cortex (core),infant,infancy,p10,cortex,temp,645.16
+270,12830,H376.VIII.51,1 yrs,F,10173,DFC,dorsolateral prefrontal cortex,infant,infancy,p10,cortex,front,645.16
+272,12830,H376.VIII.51,1 yrs,F,10225,IPC,posteroventral (inferior) parietal cortex,infant,infancy,p10,cortex,par,645.16
+273,12830,H376.VIII.51,1 yrs,F,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",infant,infancy,p10,cortex,temp,645.16
+274,12830,H376.VIII.51,1 yrs,F,10163,M1C,"primary motor cortex (area M1, area 4)",infant,infancy,p10,cortex,front,645.16
+276,12830,H376.VIII.51,1 yrs,F,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,infant,infancy,p10,cortex,front,645.16
+277,12830,H376.VIII.51,1 yrs,F,10194,OFC,orbital frontal cortex,infant,infancy,p10,cortex,front,645.16
+278,12830,H376.VIII.51,1 yrs,F,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",infant,infancy,p10,cortex,par,645.16
+279,12830,H376.VIII.51,1 yrs,F,10243,STC,posterior (caudal) superior temporal cortex (area 22c),infant,infancy,p10,cortex,temp,645.16
+281,12830,H376.VIII.51,1 yrs,F,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",infant,infancy,p10,cortex,occ,645.16
+282,12830,H376.VIII.51,1 yrs,F,10185,VFC,ventrolateral prefrontal cortex,infant,infancy,p10,cortex,front,645.16
+283,12979,H376.VIII.53,2 yrs,F,10236,A1C,primary auditory cortex (core),child,early_child,p10,cortex,temp,1010.3199999999999
+286,12979,H376.VIII.53,2 yrs,F,10173,DFC,dorsolateral prefrontal cortex,child,early_child,p10,cortex,front,1010.3199999999999
+288,12979,H376.VIII.53,2 yrs,F,10225,IPC,posteroventral (inferior) parietal cortex,child,early_child,p10,cortex,par,1010.3199999999999
+289,12979,H376.VIII.53,2 yrs,F,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",child,early_child,p10,cortex,temp,1010.3199999999999
+290,12979,H376.VIII.53,2 yrs,F,10163,M1C,"primary motor cortex (area M1, area 4)",child,early_child,p10,cortex,front,1010.3199999999999
+291,12979,H376.VIII.53,2 yrs,F,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,child,early_child,p10,cortex,front,1010.3199999999999
+292,12979,H376.VIII.53,2 yrs,F,10194,OFC,orbital frontal cortex,child,early_child,p10,cortex,front,1010.3199999999999
+293,12979,H376.VIII.53,2 yrs,F,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",child,early_child,p10,cortex,par,1010.3199999999999
+294,12979,H376.VIII.53,2 yrs,F,10243,STC,posterior (caudal) superior temporal cortex (area 22c),child,early_child,p10,cortex,temp,1010.3199999999999
+295,12979,H376.VIII.53,2 yrs,F,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",child,early_child,p10,cortex,occ,1010.3199999999999
+296,12979,H376.VIII.53,2 yrs,F,10185,VFC,ventrolateral prefrontal cortex,child,early_child,p10,cortex,front,1010.3199999999999
+297,12836,H376.VIII.52,3 yrs,F,10236,A1C,primary auditory cortex (core),child,early_child,p10,cortex,temp,1375.48
+301,12836,H376.VIII.52,3 yrs,F,10225,IPC,posteroventral (inferior) parietal cortex,child,early_child,p10,cortex,par,1375.48
+302,12836,H376.VIII.52,3 yrs,F,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",child,early_child,p10,cortex,temp,1375.48
+303,12836,H376.VIII.52,3 yrs,F,10163,M1C,"primary motor cortex (area M1, area 4)",child,early_child,p10,cortex,front,1375.48
+305,12836,H376.VIII.52,3 yrs,F,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",child,early_child,p10,cortex,par,1375.48
+306,12836,H376.VIII.52,3 yrs,F,10243,STC,posterior (caudal) superior temporal cortex (area 22c),child,early_child,p10,cortex,temp,1375.48
+308,12836,H376.VIII.52,3 yrs,F,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",child,early_child,p10,cortex,occ,1375.48
+309,12836,H376.VIII.52,3 yrs,F,10185,VFC,ventrolateral prefrontal cortex,child,early_child,p10,cortex,front,1375.48
+310,12980,H376.VIII.54,3 yrs,M,10236,A1C,primary auditory cortex (core),child,early_child,p10,cortex,temp,1375.48
+313,12980,H376.VIII.54,3 yrs,M,10173,DFC,dorsolateral prefrontal cortex,child,early_child,p10,cortex,front,1375.48
+315,12980,H376.VIII.54,3 yrs,M,10225,IPC,posteroventral (inferior) parietal cortex,child,early_child,p10,cortex,par,1375.48
+316,12980,H376.VIII.54,3 yrs,M,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",child,early_child,p10,cortex,temp,1375.48
+317,12980,H376.VIII.54,3 yrs,M,10163,M1C,"primary motor cortex (area M1, area 4)",child,early_child,p10,cortex,front,1375.48
+318,12980,H376.VIII.54,3 yrs,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,child,early_child,p10,cortex,front,1375.48
+319,12980,H376.VIII.54,3 yrs,M,10194,OFC,orbital frontal cortex,child,early_child,p10,cortex,front,1375.48
+320,12980,H376.VIII.54,3 yrs,M,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",child,early_child,p10,cortex,par,1375.48
+321,12980,H376.VIII.54,3 yrs,M,10243,STC,posterior (caudal) superior temporal cortex (area 22c),child,early_child,p10,cortex,temp,1375.48
+322,12980,H376.VIII.54,3 yrs,M,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",child,early_child,p10,cortex,occ,1375.48
+323,12980,H376.VIII.54,3 yrs,M,10185,VFC,ventrolateral prefrontal cortex,child,early_child,p10,cortex,front,1375.48
+324,12298,H376.VIII.50,4 yrs,M,10236,A1C,primary auditory cortex (core),child,early_child,p10,cortex,temp,1740.6399999999999
+327,12298,H376.VIII.50,4 yrs,M,10173,DFC,dorsolateral prefrontal cortex,child,early_child,p10,cortex,front,1740.6399999999999
+329,12298,H376.VIII.50,4 yrs,M,10225,IPC,posteroventral (inferior) parietal cortex,child,early_child,p10,cortex,par,1740.6399999999999
+330,12298,H376.VIII.50,4 yrs,M,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",child,early_child,p10,cortex,temp,1740.6399999999999
+331,12298,H376.VIII.50,4 yrs,M,10163,M1C,"primary motor cortex (area M1, area 4)",child,early_child,p10,cortex,front,1740.6399999999999
+333,12298,H376.VIII.50,4 yrs,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,child,early_child,p10,cortex,front,1740.6399999999999
+334,12298,H376.VIII.50,4 yrs,M,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",child,early_child,p10,cortex,par,1740.6399999999999
+335,12298,H376.VIII.50,4 yrs,M,10243,STC,posterior (caudal) superior temporal cortex (area 22c),child,early_child,p10,cortex,temp,1740.6399999999999
+337,12298,H376.VIII.50,4 yrs,M,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",child,early_child,p10,cortex,occ,1740.6399999999999
+338,12298,H376.VIII.50,4 yrs,M,10185,VFC,ventrolateral prefrontal cortex,child,early_child,p10,cortex,front,1740.6399999999999
+339,12841,H376.IX.51,8 yrs,M,10236,A1C,primary auditory cortex (core),child,late_child,p11,cortex,temp,3201.2799999999997
+342,12841,H376.IX.51,8 yrs,M,10173,DFC,dorsolateral prefrontal cortex,child,late_child,p11,cortex,front,3201.2799999999997
+344,12841,H376.IX.51,8 yrs,M,10225,IPC,posteroventral (inferior) parietal cortex,child,late_child,p11,cortex,par,3201.2799999999997
+345,12841,H376.IX.51,8 yrs,M,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",child,late_child,p11,cortex,temp,3201.2799999999997
+346,12841,H376.IX.51,8 yrs,M,10163,M1C,"primary motor cortex (area M1, area 4)",child,late_child,p11,cortex,front,3201.2799999999997
+348,12841,H376.IX.51,8 yrs,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,child,late_child,p11,cortex,front,3201.2799999999997
+349,12841,H376.IX.51,8 yrs,M,10194,OFC,orbital frontal cortex,child,late_child,p11,cortex,front,3201.2799999999997
+350,12841,H376.IX.51,8 yrs,M,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",child,late_child,p11,cortex,par,3201.2799999999997
+351,12841,H376.IX.51,8 yrs,M,10243,STC,posterior (caudal) superior temporal cortex (area 22c),child,late_child,p11,cortex,temp,3201.2799999999997
+353,12841,H376.IX.51,8 yrs,M,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",child,late_child,p11,cortex,occ,3201.2799999999997
+354,12841,H376.IX.51,8 yrs,M,10185,VFC,ventrolateral prefrontal cortex,child,late_child,p11,cortex,front,3201.2799999999997
+355,12831,H376.X.51,13 yrs,F,10236,A1C,primary auditory cortex (core),adolescent,adolescent,p12,cortex,temp,5027.08
+358,12831,H376.X.51,13 yrs,F,10173,DFC,dorsolateral prefrontal cortex,adolescent,adolescent,p12,cortex,front,5027.08
+360,12831,H376.X.51,13 yrs,F,10225,IPC,posteroventral (inferior) parietal cortex,adolescent,adolescent,p12,cortex,par,5027.08
+361,12831,H376.X.51,13 yrs,F,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",adolescent,adolescent,p12,cortex,temp,5027.08
+362,12831,H376.X.51,13 yrs,F,10163,M1C,"primary motor cortex (area M1, area 4)",adolescent,adolescent,p12,cortex,front,5027.08
+364,12831,H376.X.51,13 yrs,F,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,adolescent,adolescent,p12,cortex,front,5027.08
+365,12831,H376.X.51,13 yrs,F,10194,OFC,orbital frontal cortex,adolescent,adolescent,p12,cortex,front,5027.08
+366,12831,H376.X.51,13 yrs,F,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",adolescent,adolescent,p12,cortex,par,5027.08
+367,12831,H376.X.51,13 yrs,F,10243,STC,posterior (caudal) superior temporal cortex (area 22c),adolescent,adolescent,p12,cortex,temp,5027.08
+369,12831,H376.X.51,13 yrs,F,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",adolescent,adolescent,p12,cortex,occ,5027.08
+370,12831,H376.X.51,13 yrs,F,10185,VFC,ventrolateral prefrontal cortex,adolescent,adolescent,p12,cortex,front,5027.08
+371,12299,H376.X.50,15 yrs,M,10236,A1C,primary auditory cortex (core),adolescent,adolescent,p12,cortex,temp,5757.4
+374,12299,H376.X.50,15 yrs,M,10173,DFC,dorsolateral prefrontal cortex,adolescent,adolescent,p12,cortex,front,5757.4
+375,12299,H376.X.50,15 yrs,M,10225,IPC,posteroventral (inferior) parietal cortex,adolescent,adolescent,p12,cortex,par,5757.4
+376,12299,H376.X.50,15 yrs,M,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",adolescent,adolescent,p12,cortex,temp,5757.4
+377,12299,H376.X.50,15 yrs,M,10163,M1C,"primary motor cortex (area M1, area 4)",adolescent,adolescent,p12,cortex,front,5757.4
+379,12299,H376.X.50,15 yrs,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,adolescent,adolescent,p12,cortex,front,5757.4
+380,12299,H376.X.50,15 yrs,M,10194,OFC,orbital frontal cortex,adolescent,adolescent,p12,cortex,front,5757.4
+381,12299,H376.X.50,15 yrs,M,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",adolescent,adolescent,p12,cortex,par,5757.4
+382,12299,H376.X.50,15 yrs,M,10243,STC,posterior (caudal) superior temporal cortex (area 22c),adolescent,adolescent,p12,cortex,temp,5757.4
+384,12299,H376.X.50,15 yrs,M,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",adolescent,adolescent,p12,cortex,occ,5757.4
+385,12299,H376.X.50,15 yrs,M,10185,VFC,ventrolateral prefrontal cortex,adolescent,adolescent,p12,cortex,front,5757.4
+386,12984,H376.X.53,18 yrs,M,10236,A1C,primary auditory cortex (core),adolescent,adolescent,p12,cortex,temp,6852.88
+388,12984,H376.X.53,18 yrs,M,10173,DFC,dorsolateral prefrontal cortex,adolescent,adolescent,p12,cortex,front,6852.88
+390,12984,H376.X.53,18 yrs,M,10225,IPC,posteroventral (inferior) parietal cortex,adolescent,adolescent,p12,cortex,par,6852.88
+391,12984,H376.X.53,18 yrs,M,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",adolescent,adolescent,p12,cortex,temp,6852.88
+392,12984,H376.X.53,18 yrs,M,10163,M1C,"primary motor cortex (area M1, area 4)",adolescent,adolescent,p12,cortex,front,6852.88
+393,12984,H376.X.53,18 yrs,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,adolescent,adolescent,p12,cortex,front,6852.88
+394,12984,H376.X.53,18 yrs,M,10194,OFC,orbital frontal cortex,adolescent,adolescent,p12,cortex,front,6852.88
+395,12984,H376.X.53,18 yrs,M,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",adolescent,adolescent,p12,cortex,par,6852.88
+396,12984,H376.X.53,18 yrs,M,10243,STC,posterior (caudal) superior temporal cortex (area 22c),adolescent,adolescent,p12,cortex,temp,6852.88
+397,12984,H376.X.53,18 yrs,M,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",adolescent,adolescent,p12,cortex,occ,6852.88
+398,12984,H376.X.53,18 yrs,M,10185,VFC,ventrolateral prefrontal cortex,adolescent,adolescent,p12,cortex,front,6852.88
+399,13057,H376.XI.60,21 yrs,F,10236,A1C,primary auditory cortex (core),adult,adult,p13,cortex,temp,7948.36
+402,13057,H376.XI.60,21 yrs,F,10173,DFC,dorsolateral prefrontal cortex,adult,adult,p13,cortex,front,7948.36
+404,13057,H376.XI.60,21 yrs,F,10225,IPC,posteroventral (inferior) parietal cortex,adult,adult,p13,cortex,par,7948.36
+405,13057,H376.XI.60,21 yrs,F,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",adult,adult,p13,cortex,temp,7948.36
+406,13057,H376.XI.60,21 yrs,F,10163,M1C,"primary motor cortex (area M1, area 4)",adult,adult,p13,cortex,front,7948.36
+408,13057,H376.XI.60,21 yrs,F,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,adult,adult,p13,cortex,front,7948.36
+409,13057,H376.XI.60,21 yrs,F,10194,OFC,orbital frontal cortex,adult,adult,p13,cortex,front,7948.36
+410,13057,H376.XI.60,21 yrs,F,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",adult,adult,p13,cortex,par,7948.36
+411,13057,H376.XI.60,21 yrs,F,10243,STC,posterior (caudal) superior temporal cortex (area 22c),adult,adult,p13,cortex,temp,7948.36
+413,13057,H376.XI.60,21 yrs,F,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",adult,adult,p13,cortex,occ,7948.36
+414,13057,H376.XI.60,21 yrs,F,10185,VFC,ventrolateral prefrontal cortex,adult,adult,p13,cortex,front,7948.36
+415,12300,H376.XI.50,23 yrs,M,10236,A1C,primary auditory cortex (core),adult,adult,p13,cortex,temp,8678.68
+418,12300,H376.XI.50,23 yrs,M,10173,DFC,dorsolateral prefrontal cortex,adult,adult,p13,cortex,front,8678.68
+420,12300,H376.XI.50,23 yrs,M,10225,IPC,posteroventral (inferior) parietal cortex,adult,adult,p13,cortex,par,8678.68
+421,12300,H376.XI.50,23 yrs,M,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",adult,adult,p13,cortex,temp,8678.68
+422,12300,H376.XI.50,23 yrs,M,10163,M1C,"primary motor cortex (area M1, area 4)",adult,adult,p13,cortex,front,8678.68
+424,12300,H376.XI.50,23 yrs,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,adult,adult,p13,cortex,front,8678.68
+425,12300,H376.XI.50,23 yrs,M,10194,OFC,orbital frontal cortex,adult,adult,p13,cortex,front,8678.68
+426,12300,H376.XI.50,23 yrs,M,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",adult,adult,p13,cortex,par,8678.68
+427,12300,H376.XI.50,23 yrs,M,10243,STC,posterior (caudal) superior temporal cortex (area 22c),adult,adult,p13,cortex,temp,8678.68
+429,12300,H376.XI.50,23 yrs,M,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",adult,adult,p13,cortex,occ,8678.68
+430,12300,H376.XI.50,23 yrs,M,10185,VFC,ventrolateral prefrontal cortex,adult,adult,p13,cortex,front,8678.68
+431,12290,H376.XI.52,30 yrs,F,10236,A1C,primary auditory cortex (core),adult,adult,p13,cortex,temp,11234.8
+434,12290,H376.XI.52,30 yrs,F,10173,DFC,dorsolateral prefrontal cortex,adult,adult,p13,cortex,front,11234.8
+436,12290,H376.XI.52,30 yrs,F,10225,IPC,posteroventral (inferior) parietal cortex,adult,adult,p13,cortex,par,11234.8
+437,12290,H376.XI.52,30 yrs,F,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",adult,adult,p13,cortex,temp,11234.8
+438,12290,H376.XI.52,30 yrs,F,10163,M1C,"primary motor cortex (area M1, area 4)",adult,adult,p13,cortex,front,11234.8
+440,12290,H376.XI.52,30 yrs,F,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,adult,adult,p13,cortex,front,11234.8
+441,12290,H376.XI.52,30 yrs,F,10194,OFC,orbital frontal cortex,adult,adult,p13,cortex,front,11234.8
+442,12290,H376.XI.52,30 yrs,F,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",adult,adult,p13,cortex,par,11234.8
+443,12290,H376.XI.52,30 yrs,F,10243,STC,posterior (caudal) superior temporal cortex (area 22c),adult,adult,p13,cortex,temp,11234.8
+445,12290,H376.XI.52,30 yrs,F,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",adult,adult,p13,cortex,occ,11234.8
+446,12290,H376.XI.52,30 yrs,F,10185,VFC,ventrolateral prefrontal cortex,adult,adult,p13,cortex,front,11234.8
+447,12302,H376.XI.53,36 yrs,M,10236,A1C,primary auditory cortex (core),adult,adult,p13,cortex,temp,13425.76
+450,12302,H376.XI.53,36 yrs,M,10173,DFC,dorsolateral prefrontal cortex,adult,adult,p13,cortex,front,13425.76
+452,12302,H376.XI.53,36 yrs,M,10225,IPC,posteroventral (inferior) parietal cortex,adult,adult,p13,cortex,par,13425.76
+453,12302,H376.XI.53,36 yrs,M,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",adult,adult,p13,cortex,temp,13425.76
+454,12302,H376.XI.53,36 yrs,M,10163,M1C,"primary motor cortex (area M1, area 4)",adult,adult,p13,cortex,front,13425.76
+456,12302,H376.XI.53,36 yrs,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,adult,adult,p13,cortex,front,13425.76
+457,12302,H376.XI.53,36 yrs,M,10194,OFC,orbital frontal cortex,adult,adult,p13,cortex,front,13425.76
+458,12302,H376.XI.53,36 yrs,M,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",adult,adult,p13,cortex,par,13425.76
+459,12302,H376.XI.53,36 yrs,M,10243,STC,posterior (caudal) superior temporal cortex (area 22c),adult,adult,p13,cortex,temp,13425.76
+461,12302,H376.XI.53,36 yrs,M,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",adult,adult,p13,cortex,occ,13425.76
+462,12302,H376.XI.53,36 yrs,M,10185,VFC,ventrolateral prefrontal cortex,adult,adult,p13,cortex,front,13425.76
+463,12303,H376.XI.54,37 yrs,M,10236,A1C,primary auditory cortex (core),adult,adult,p13,cortex,temp,13790.92
+465,12303,H376.XI.54,37 yrs,M,10173,DFC,dorsolateral prefrontal cortex,adult,adult,p13,cortex,front,13790.92
+467,12303,H376.XI.54,37 yrs,M,10225,IPC,posteroventral (inferior) parietal cortex,adult,adult,p13,cortex,par,13790.92
+468,12303,H376.XI.54,37 yrs,M,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",adult,adult,p13,cortex,temp,13790.92
+469,12303,H376.XI.54,37 yrs,M,10163,M1C,"primary motor cortex (area M1, area 4)",adult,adult,p13,cortex,front,13790.92
+471,12303,H376.XI.54,37 yrs,M,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,adult,adult,p13,cortex,front,13790.92
+472,12303,H376.XI.54,37 yrs,M,10194,OFC,orbital frontal cortex,adult,adult,p13,cortex,front,13790.92
+473,12303,H376.XI.54,37 yrs,M,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",adult,adult,p13,cortex,par,13790.92
+474,12303,H376.XI.54,37 yrs,M,10243,STC,posterior (caudal) superior temporal cortex (area 22c),adult,adult,p13,cortex,temp,13790.92
+476,12303,H376.XI.54,37 yrs,M,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",adult,adult,p13,cortex,occ,13790.92
+477,12303,H376.XI.54,37 yrs,M,10185,VFC,ventrolateral prefrontal cortex,adult,adult,p13,cortex,front,13790.92
+478,12304,H376.XI.56,40 yrs,F,10236,A1C,primary auditory cortex (core),adult,adult,p14,cortex,temp,14886.4
+480,12304,H376.XI.56,40 yrs,F,10173,DFC,dorsolateral prefrontal cortex,adult,adult,p14,cortex,front,14886.4
+482,12304,H376.XI.56,40 yrs,F,10225,IPC,posteroventral (inferior) parietal cortex,adult,adult,p14,cortex,par,14886.4
+483,12304,H376.XI.56,40 yrs,F,10252,ITC,"inferolateral temporal cortex (area TEv, area 20)",adult,adult,p14,cortex,temp,14886.4
+484,12304,H376.XI.56,40 yrs,F,10163,M1C,"primary motor cortex (area M1, area 4)",adult,adult,p14,cortex,front,14886.4
+486,12304,H376.XI.56,40 yrs,F,10278,MFC,anterior (rostral) cingulate (medial prefrontal) cortex,adult,adult,p14,cortex,front,14886.4
+487,12304,H376.XI.56,40 yrs,F,10194,OFC,orbital frontal cortex,adult,adult,p14,cortex,front,14886.4
+488,12304,H376.XI.56,40 yrs,F,10209,S1C,"primary somatosensory cortex (area S1, areas 3,1,2)",adult,adult,p14,cortex,par,14886.4
+489,12304,H376.XI.56,40 yrs,F,10243,STC,posterior (caudal) superior temporal cortex (area 22c),adult,adult,p14,cortex,temp,14886.4
+491,12304,H376.XI.56,40 yrs,F,10269,V1C,"primary visual cortex (striate cortex, area V1/17)",adult,adult,p14,cortex,occ,14886.4
+492,12304,H376.XI.56,40 yrs,F,10185,VFC,ventrolateral prefrontal cortex,adult,adult,p14,cortex,front,14886.4

@@ -1,0 +1,11 @@
+pathway,reactome ID,reactome name
+glycolysis,R-HSA-70171,glycolysis
+ppp,R-HSA-71336,pentose phosphate pathway
+tca,R-HSA-71403,citric acid cycle (TCA cycle)
+etc,R-HSA-611105,respiratory electron transport
+atpsynth,R-HSA-163210,formation of ATP by chemiosmotic coupling
+ketone body utilization,R-HSA-77108,utilization of ketone bodies
+ros detox,R-HSA-3299685,detoxification of reactive oxygen species
+fa metabolism,R-HSA-8978868,fatty acid metabolism
+no signalling,R-HSA-392154,nitric oxide stimulates guanylate cyclase
+glycogen metabolism,R-HSA-8982491,glycogen metabolism

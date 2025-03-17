@@ -1,0 +1,16 @@
+pathway,GO ID,GO term 
+glycolysis,GO:0006096,glycolytic process
+ppp,GO:0006098,pentose-phosphate shunt
+tca,GO:0006099,tricarboxylic acid cycle
+complex1,GO:0006120,"mitochondrial electron transport, NADH to ubiquinone"
+complex2,GO:0006121,"mitochondrial electron transport, succinate to ubiquinone"
+complex3,GO:0006122,"mitochondrial electron transport, ubiquinol to cytochrome c"
+complex4,GO:0006123,"mitochondrial electron transport, cytochrome c to oxygen"
+etc,GO:0019646,aerobic electron transport chain
+atpsynth,GO:0046933,"proton-transporting ATP synthase activity, rotational mechanism"
+lactate metabolism,GO:0006089,lactate metabolic process
+lactate transport,GO:0015727,lactate transport
+ketone body utilization,GO:0046952,ketone body catabolic process
+fa metabolism,GO:0006631,fatty acid metabolic process
+glycogen metabolism,GO:0005977,glycogen metabolic process
+ros gen,GO:1903409,reactive oxygen species biosynthetic process

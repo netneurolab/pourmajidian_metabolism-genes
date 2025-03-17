@@ -1,0 +1,18 @@
+
+# Python
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Folders
+# data/
+# results/
+# figures/
+
+# R
+# History files
+.Rhistory
+
+# Session Data files
+.RData
+.RDataTmp
+

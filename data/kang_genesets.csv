@@ -1,0 +1,205 @@
+Functional group,Subgroup,Gene symbol
+Cell proliferation marker,,HES1
+Cell proliferation marker,,MKI67
+Cell proliferation marker,,NES
+Cell proliferation marker,,RRM1
+GABA shift,Bumetanide-sensitive sodium-potassium-2 chloride cotransporter,SLC12A1
+GABA shift,Bumetanide-sensitive sodium-potassium-2 chloride cotransporter,SLC12A2
+GABA shift,Carbonic anhydrase,CA2
+GABA shift,Carbonic anhydrase,CA7
+GABA shift,Potassium chloride cotransporter,SLC12A4
+GABA shift,Potassium chloride cotransporter,SLC12A5
+GABA shift,Potassium chloride cotransporter,SLC12A6
+GABA shift,Potassium chloride cotransporter,SLC12A7
+Myelination,,C11orf9
+Myelination,,MAG
+Myelination,,MBP
+Myelination,,MOG
+Myelination,,PLP1
+Neuron development,Axon development,CNTN2
+Neuron development,Dendrite development,CAMK2A
+Neuron development,Dendrite development,MAP1A
+Neuron development,Dendrite development,MAPT
+Neuron development,Neuron differentiation,MAP1B
+Neuron development,Neuron differentiation,MAP2
+Neuron development,Neuron differentiation,TUBB
+Neuron development,Neuron migration,DCX
+Neuron development,Synapse development,SYN1
+Neuron development,Synapse development,SYP
+Neuron development,Synapse development,SYPL1
+Neuron development,Synapse development,SYPL2
+Astrocytes,,ALDOC
+Astrocytes,,GFAP
+Astrocytes,,S100B
+Cortical GABA interneurons,GABA cell type,CALB2
+Cortical GABA interneurons,GABA cell type,CALB1
+Cortical GABA interneurons,GABA cell type,NOS1
+Cortical GABA interneurons,GABA cell type,PVALB
+Cortical GABA interneurons,GABA cell type,CCK
+Cortical GABA interneurons,GABA cell type,VIP
+Cortical GABA interneurons,GABA progenitor,DLX1
+Cortical GABA interneurons,GABA progenitor,DLX2
+Cortical GABA interneurons,GABA progenitor,NKX2-1
+Cortical GABA interneurons,GABA progenitor,ASCL1
+Cortical GABA interneurons,Pan GABA cell marker,GAD1
+Cortical GABA interneurons,Pan GABA cell marker,GAD2
+Cortical glutamatergic neurons,Layer1,RELN
+Cortical glutamatergic neurons,Layer2-4 ,CUX1
+Cortical glutamatergic neurons,Layer2-4 ,UNC5D
+Cortical glutamatergic neurons,Layer4 ,RORB
+Cortical glutamatergic neurons,Layer5 ,BCL11B
+Cortical glutamatergic neurons,Layer5 ,ETV1
+Cortical glutamatergic neurons,Layer5 ,FEZF2
+Cortical glutamatergic neurons,Layer5 ,OTX1
+Cortical glutamatergic neurons,Layer6 ,FOXP2
+Cortical glutamatergic neurons,Layer6 ,NTSR1
+Cortical glutamatergic neurons,Layer6 ,SOX5
+Cortical glutamatergic neurons,Layer6 ,SSTR2
+Cortical glutamatergic neurons,Layer6,TBR1
+Cortical glutamatergic neurons,Layer6,TLE4
+Cortical glutamatergic neurons,Layer6,ZFPM2
+Cortical glutamatergic neurons,Subplate ,CTGF
+Cortical glutamatergic neurons,Subplate,UNC5C
+Microglia,,CFH
+Microglia,,FCER1G
+Microglia,,TNIP2
+Oligodendrocytes,Oligodendrocyte mature cell marker,CNP
+Oligodendrocytes,Oligodendrocyte progenitor cell marker,CSPG4
+Oligodendrocytes,Oligodendrocyte progenitor cell marker,OLIG1
+Oligodendrocytes,Oligodendrocyte progenitor cell marker,OLIG2
+Oligodendrocytes,Oligodendrocyte progenitor cell marker,PDGFRA
+Glutamergic system,Glutamate biosynthesis ,GLS
+Glutamergic system,Glutamate transporter,SLC1A3
+Glutamergic system,Glutamate transporter,SLC1A2
+Glutamergic system,Glutamate transporter,SLC1A1
+Glutamergic system,Glutamate transporter,SLC1A6
+Glutamergic system,Glutamate transporter,SLC1A7
+Glutamergic system,Glutamate transporter,SLC17A7
+Glutamergic system,Glutamate transporter,SLC17A6
+Glutamergic system,Ionotropic receptor family,GRIA1
+Glutamergic system,Ionotropic receptor family,GRIA2
+Glutamergic system,Ionotropic receptor family,GRIA3
+Glutamergic system,Ionotropic receptor family,GRIA4
+Glutamergic system,Ionotropic receptor family,GRIK1
+Glutamergic system,Ionotropic receptor family,GRIK2
+Glutamergic system,Ionotropic receptor family,GRIK3
+Glutamergic system,Ionotropic receptor family,GRIK4
+Glutamergic system,Ionotropic receptor family,GRIK5
+Glutamergic system,Ionotropic receptor family,GRIN1
+Glutamergic system,Ionotropic receptor family,GRIN2A
+Glutamergic system,Ionotropic receptor family,GRIN2B
+Glutamergic system,Ionotropic receptor family,GRIN2C
+Glutamergic system,Ionotropic receptor family,GRIN2D
+Glutamergic system,Ionotropic receptor family,GRIN3A
+Glutamergic system,Metabotropic receptor family,GRM1
+Glutamergic system,Metabotropic receptor family,GRM5
+Glutamergic system,Metabotropic receptor family,GRM2
+Glutamergic system,Metabotropic receptor family,GRM3
+Glutamergic system,Metabotropic receptor family,GRM4
+Glutamergic system,Metabotropic receptor family,GRM6
+Glutamergic system,Metabotropic receptor family,GRM7
+Glutamergic system,Metabotropic receptor family,GRM8
+GABAergic System,GABAA ionotropic receptor,GAD1
+GABAergic System,GABAA ionotropic receptor,GAD2
+GABAergic System,GABAA ionotropic receptor,GABRA1
+GABAergic System,GABAA ionotropic receptor,GABRA2
+GABAergic System,GABAA ionotropic receptor,GABRA3
+GABAergic System,GABAA ionotropic receptor,GABRA4
+GABAergic System,GABAA ionotropic receptor,GABRA5
+GABAergic System,GABAA ionotropic receptor,GABRA6
+GABAergic System,GABAA ionotropic receptor,GABRB1
+GABAergic System,GABAA ionotropic receptor,GABRB2
+GABAergic System,GABAA ionotropic receptor,GABRB3
+GABAergic System,GABAA ionotropic receptor,GABRG1
+GABAergic System,GABAA ionotropic receptor,GABRG2
+GABAergic System,GABAA ionotropic receptor,GABRG3
+GABAergic System,GABAA ionotropic receptor,GABRD
+GABAergic System,GABAA ionotropic receptor,GABRE
+GABAergic System,GABAA ionotropic receptor,GABRP
+GABAergic System,GABAA ionotropic receptor,GABRQ
+GABAergic System,GABAA ionotropic receptor,GABRR1
+GABAergic System,GABAA ionotropic receptor,GABRR2
+GABAergic System,GABAB G protein coupled receptor,GABBR1
+GABAergic System,GABAB G protein coupled receptor,GABBR2
+Dopaminergic System,Dopamine biosynthesis ,TH
+Dopaminergic System,Dopamine biosynthesis ,DDC
+Dopaminergic System,Dopamine transporter,COMT
+Dopaminergic System,Dopamine transporter,DRD1
+Dopaminergic System,Dopamine transporter,DRD5
+Dopaminergic System,Dopamine transporter,DRD2
+Dopaminergic System,Dopamine transporter,DRD3
+Dopaminergic System,Dopamine transporter,DRD4
+Cholinergic system,Acetylcholine biosynthesis ,CHAT
+Cholinergic system,Acetylcholine degradation,ACHE
+Cholinergic system,Nicotinic receptor,CHRNA1
+Cholinergic system,Nicotinic receptor,CHRNA2
+Cholinergic system,Nicotinic receptor,CHRNA3
+Cholinergic system,Nicotinic receptor,CHRNA4
+Cholinergic system,Nicotinic receptor,CHRNA5
+Cholinergic system,Nicotinic receptor,CHRNA6
+Cholinergic system,Nicotinic receptor,CHRNA7
+Cholinergic system,Nicotinic receptor,CHRNA9
+Cholinergic system,Nicotinic receptor,CHRNA10
+Cholinergic system,Nicotinic receptor,CHRNB1
+Cholinergic system,Nicotinic receptor,CHRNB2
+Cholinergic system,Nicotinic receptor,CHRNB3
+Cholinergic system,Nicotinic receptor,CHRNB4
+Cholinergic system,Nicotinic receptor,CHRND
+Cholinergic system,Nicotinic receptor,CHRNE
+Cholinergic system,Nicotinic receptor,CHRNG
+Cholinergic system,Muscarinic receptor,CHRM1
+Cholinergic system,Muscarinic receptor,CHRM2
+Cholinergic system,Muscarinic receptor,CHRM3
+Cholinergic system,Muscarinic receptor,CHRM4
+Cholinergic system,Muscarinic receptor,CHRM5
+Noradrenalinergic and adrenergic system,Noradrenaline/adrenaline biosynthesis ,DBH
+Noradrenalinergic and adrenergic system,Noradrenaline/adrenaline biosynthesis ,PNMT
+Noradrenalinergic and adrenergic system,Noradrenaline transporter,SLC6A2
+Noradrenalinergic and adrenergic system,Alpha adrenergic receptor,ADRA1A
+Noradrenalinergic and adrenergic system,Alpha adrenergic receptor,ADRA1B
+Noradrenalinergic and adrenergic system,Alpha adrenergic receptor,ADRA1D
+Noradrenalinergic and adrenergic system,Alpha adrenergic receptor,ADRA2A
+Noradrenalinergic and adrenergic system,Alpha adrenergic receptor,ADRA2B
+Noradrenalinergic and adrenergic system,Alpha adrenergic receptor,ADRA2C
+Noradrenalinergic and adrenergic system,Beta adrenergic receptors,ADRB1
+Noradrenalinergic and adrenergic system,Beta adrenergic receptors,ADRB2
+Noradrenalinergic and adrenergic system,Beta adrenergic receptors,ADRB3
+Serotoninergic system,Serotonin biosynthesis ,TPH1
+Serotoninergic system,Serotonin biosynthesis ,TPH2
+Serotoninergic system,Serotonin biosynthesis ,DDC
+Serotoninergic system,Serotonin degradation,MAOA
+Serotoninergic system,Serotonin degradation,MAOB
+Serotoninergic system,Serotonin receptor,HTR1A
+Serotoninergic system,Serotonin receptor,HTR1B
+Serotoninergic system,Serotonin receptor,HTR1D
+Serotoninergic system,Serotonin receptor,HTR1E
+Serotoninergic system,Serotonin receptor,HTR1F
+Serotoninergic system,Serotonin receptor,HTR2A
+Serotoninergic system,Serotonin receptor,HTR2B
+Serotoninergic system,Serotonin receptor,HTR2C
+Serotoninergic system,Serotonin receptor,HTR3A
+Serotoninergic system,Serotonin receptor,HTR3B
+Serotoninergic system,Serotonin receptor,HTR3C
+Serotoninergic system,Serotonin receptor,HTR3D
+Serotoninergic system,Serotonin receptor,HTR3E
+Serotoninergic system,Serotonin receptor,HTR4
+Serotoninergic system,Serotonin receptor,HTR5A
+Serotoninergic system,Serotonin receptor,HTR6
+Serotoninergic system,Serotonin receptor,HTR7
+Histaminergic system,Histamine biosynthesis ,HDC
+Histaminergic system,Histamine degradation,HNMT
+Histaminergic system,Histamine degradation,ABP1
+Histaminergic system,Histamine receptor,HRH1
+Histaminergic system,Histamine receptor,HRH2
+Histaminergic system,Histamine receptor,HRH3
+Histaminergic system,Histamine receptor,HRH4
+Glycinergic system,Glycine biosynthesis,SHMT1
+Glycinergic system,Glycine biosynthesis,SHMT2
+Glycinergic system,Glycine receptor,GLRA1
+Glycinergic system,Glycine receptor,GLRA2
+Glycinergic system,Glycine receptor,GLRA3
+Glycinergic system,Glycine receptor,GLRB
+Adenosinergic system,Adenosine receptor,ADORA1
+Adenosinergic system,Adenosine receptor,ADORA2A
+Adenosinergic system,Adenosine receptor,ADORA2B
+Adenosinergic system,Adenosine receptor,ADORA3
