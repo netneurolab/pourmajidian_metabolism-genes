@@ -8,4 +8,4 @@ The [scripts](scripts/) folder conatins all the scripts required to run the anal
 The [data](data/) folder includes all data needed to run the scripts.
 
 ## results
-The [results](results/) folder includes outputs generated from the scripts, including the energy expression matrices and maps.
+The [results](results/) folder includes outputs generated from the scripts, including the energy expression matrices and mean expression maps.
