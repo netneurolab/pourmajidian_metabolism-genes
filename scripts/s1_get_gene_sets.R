@@ -1,6 +1,8 @@
 
 '''
-gene set curation
+Script to retrieve energy pathway gene sets
+from Gene Ontology and Reactome Pathways
+
 Author: Moohebat
 Date: 22/11/2024
 '''
@@ -33,6 +35,7 @@ ensembl_filt <- listFilters(hsapiens_ensembl_genes)
 
 #####################################
 #getting gene sets from Gene Ontology
+
 go_pathway <- c('glycolysis', 'ppp', 
                 'tca', 'complex1', 
                 'complex2', 'complex3',
@@ -46,7 +49,7 @@ go_pathway <- c('glycolysis', 'ppp',
                 'kb_synth', 'fa_synth',
                 'superoxide_gen', 'superoxide_remove',
                 'mas', 'gps', 
-                'ros_gen')
+                'ros_gen', 'bcaa_cat')
 
 go_pathway_id <- c('GO:0006096', 'GO:0006098', 
                    'GO:0006099', 'GO:0006120', 
@@ -61,7 +64,7 @@ go_pathway_id <- c('GO:0006096', 'GO:0006098',
                    'GO:0046951', 'GO:0006633',
                    'GO:0042554', 'GO:0019430',
                    'GO:0043490', 'GO:0006127',
-                   'GO:1903409')
+                   'GO:1903409', 'GO:0009083')
 
 #function for retrieving gene set based on go_id
 get_gene_sets_go <- function(go_ids, pathway) {
@@ -98,8 +101,10 @@ get_gene_sets_go <- function(go_ids, pathway) {
 
 energy_df_go <- get_gene_sets_go(go_pathway_id, go_pathway)
 
-###############################
-#Reactome curations
+
+####################
+# Reactome curations
+
 reactome_pathway = c('glycolysis', 'ppp', 
                      'tca', 'etc', 
                      'atpsynth', 'kb_util',
@@ -108,7 +113,8 @@ reactome_pathway = c('glycolysis', 'ppp',
                      'fa_metabolism', 'no_signalling',
                      'kb_metabolism', 'glycogen_metabolism',
                      'kb_synth', 'fa_synth',
-                     'mas', 'gps')
+                     'mas', 'gps',
+                     'bcaa_cat')
 
 reactome_pathway_id = c('R-HSA-70171', 'R-HSA-71336', 
                         'R-HSA-71403', 'R-HSA-611105', 
@@ -118,7 +124,8 @@ reactome_pathway_id = c('R-HSA-70171', 'R-HSA-71336',
                         'R-HSA-8978868', 'R-HSA-392154',
                         'R-HSA-74182', 'R-HSA-8982491',
                         'R-HSA-77111', 'R-HSA-75105',
-                        'R-HSA-9856872', 'R-HSA-188467')
+                        'R-HSA-9856872', 'R-HSA-188467',
+                        'R-HSA-70895')
 
 
 #function for retrieving gene set based on reactome
@@ -137,16 +144,16 @@ get_gene_sets_reactome <- function(reactome_ids, pathway) {
     
     df <- data.frame(genes)
     
-    # Store the data frame in the list
+    # add to dataframe
     energy_df[[pathway[i]]] <- df
   }
   
-  # add to dataframe
   return(energy_df)
 }
 
 energy_df_reactome <- get_gene_sets_reactome(reactome_pathway_id, 
                                              reactome_pathway)
+
 
 ###############################
 #getting shared genes between reactome and GO gene sets

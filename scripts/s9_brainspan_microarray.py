@@ -9,17 +9,13 @@ Author: Moohebat
 Data: 13/12/2024
 
 '''
-# import packages
+
 import pickle
 import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-from scipy.stats import zscore
-from sklearn.decomposition import PCA
 
-import rpy2.robjects as robjects
-from rpy2.robjects.packages import importr
 import rpy2.robjects.lib.ggplot2 as ggplot2
 from rpy2.robjects.lib import grdevices
 from rpy2.robjects import pandas2ri
@@ -187,29 +183,21 @@ dropped = list(set(sample_data['structure_acronym']) - set(sample_data2['structu
 # dropped ['M1C-S1C', 'CGE', 'MD', 'Ocx', 'CBC', 'AMY', 
 # 'TCx', 'DTH', 'LGE', 'HIP', 'PCx', 'STR', 'MGE', 'URL', 'CB']
 # 334 samples left
-# if i run this on the whole brain: 465 samples left
-
-# drop regions with low sample size
-# np.unique(sample_data2['age']).shape  # 27
-# sample_data3 = sample_data2.groupby('age').filter(lambda x: len(x) >= 6)
-# np.unique(sample_data3['age']).shape  # 24
-# dropped_ages = list(set(sample_data2['age']) - set(sample_data3['age']))
-# # dropped ['9 pcw', '25 pcw', '26 pcw']
 
 bs_exp = bs_exp.loc[:, sample_data2.index]
 # 17604 x 334
 
 ##############
 # gene cleanup
+
 # 1. drop duplicate genes
 gene_uniq = gene_data.drop_duplicates()
 bs_exp = bs_exp.iloc[gene_uniq.index, :] # (17282 rows x 334 columns)
 
 # 2. drop non-expressed genes
 # excluded genes with a log2-transformed expression value <6
-# this keeps 3673 genes
 bs_exp = bs_exp.loc[(bs_exp >= 6).any(axis=1)] # 13635
-# if whole brain 14139 genes by 465 samples
+
 gene_qc = gene_uniq.loc[bs_exp.index]
 
 bs_df = pd.concat([gene_qc, bs_exp], axis=1)
@@ -218,6 +206,7 @@ bs_df = pd.concat([gene_qc, bs_exp], axis=1)
 sample_data2.to_csv(path_result+'sample_data_micro_qc.csv')
 bs_df.to_csv(path_result+'brainspan_micro_exp_qc.csv')
 
+####################
 # quartile normalize
 
 # load brainspan data
@@ -242,6 +231,7 @@ df_norm = df_norm.sort_index()
 
 # save
 df_norm.to_csv(path_result+'brianspan_exp_micro_uqnorm.csv')
+
 
 #################
 # energy analysis
@@ -376,77 +366,3 @@ pp = (ggplot2.ggplot(df_r) +
                                        size=0.7, show_legend=False))
 pp.plot()
 grdevices.dev_off()
-
-
-# strip for all ages
-for category in ['age']:
-    for key in energy_genes.keys():
-        if key in energy_main:
-            plt.figure(figsize=(4, 3))
-            sns.stripplot(
-                data=df,
-                x=category,
-                y=key,
-                s=3,
-                color='sandybrown',
-                edgecolor='grey',
-                linewidth=0.2,
-                alpha=0.9,
-                legend=False, 
-                jitter=True,
-            )
-            plt.ylabel('expression (RPKM)')
-            plt.title(key)
-            plt.xlabel(None)
-            plt.xticks(rotation=90)
-            sns.despine()
-            plt.tight_layout()
-            # plt.savefig(path_fig+key+'_'+ category +'_strip.svg')
-            plt.show()
-
-
-# simple stats
-# plotting basic stats for brainspan data
-# after qc
-variables = ['donor_name', 'age', 'structure_acronym', 'gender']
-for var in variables:
-    plt.figure(figsize=(4,4))
-    plot = sns.histplot(sample_data2, x=sample_data2[var], edgecolor='w', color='sandybrown')
-    for p in plot.patches:
-        plot.text(
-            p.get_x() + p.get_width() / 2.0,
-            p.get_height(),
-            '%d' % int(p.get_height()),
-            fontsize=5,
-            color='k',
-            ha='center',
-            va='bottom',
-        )
-    plt.xlabel(var, fontsize=5)
-    plt.xticks(rotation=90, fontsize=5)
-    plt.yticks([])
-    plt.ylabel('number of samples', fontsize=5)
-    plt.title('number of samples for each '+var, fontsize=5)
-    sns.despine()
-    plt.tight_layout()
-    # plt.savefig(path_fig + var+'_sample_stat_qc.svg')
-    plt.show()
-
-
-# save summary of brainspan into latex table
-num_samples = sample_data.groupby('donor_name').size()
-
-names = ['early_fetal','mid_fetal','late_fetal','infancy', 
-         'early_child','late_child','adolescent','adult']
-
-table = sample_data.groupby('age_group2')['age'].apply(set).reindex(names).reset_index()
-table['age'] = table['age'].apply(sorted)
-num_samples = sample_data.groupby('age_group2').size().reindex(names).reset_index()
-
-table_final = pd.concat([table, num_samples.iloc[:, 1]], axis=1)
-table_final.columns = ['age group', 'age', 'num samples']
-
-latex_table = table_final.to_latex(path_result+'brainspan_summary_micro_compact.tex',
-                              index=False,
-                              caption="", 
-                              label="tab:brainspan_summary",)

@@ -1,7 +1,9 @@
 
 '''
 Sensitivity analysis
-Using only left hemisphere data
+Using only left hemisphere data from 
+the Allen Human Brain Atlas
+
 Author: Moohebat
 Date: 09/07/2024
 '''
@@ -15,7 +17,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import colormaps as cmaps
 from sklearn.decomposition import PCA
-from scipy.stats import zscore, spearmanr
 from nilearn.datasets import fetch_atlas_schaefer_2018
 from scripts.utils import (plot_schaefer_fsaverage, corr_spin_test, 
                            filter_expression_ds, geneset_expression)
@@ -27,7 +28,7 @@ path_fig = './figures/'
 path_all= './results/energy_sets/all_pathways/'
 
 # loading schaefer400 spins
-# spins are generated for one hemisphere and the mirrored
+# spins are generated for one hemisphere and then mirrored
 # so I can just take the first 200 elements for lh
 spins10k = np.load(path_data+'spins10k.npy')
 
@@ -67,6 +68,7 @@ with open(path_data + 'lh_expression_ds01.pickle', 'wb') as f:
 with open(path_data + 'lh_expression_ds01.pickle', 'rb') as f:
     lh_expression_ds01 = pickle.load(f)
 
+
 ##################################
 # load energy gene sets dictionary
 with open(path_result + 'energy_genelist_dict.pickle', 'rb') as f:
@@ -78,7 +80,7 @@ pca = PCA(n_components=1)
 energy_exp_lh = {}
 energy_mean_lh = {}
 
-# getting expression matrices, pc1 and mean maps for energy pathways
+# get expression matrices and mean maps for energy pathways
 for key, value in energy_dict.items():
     energy_exp_lh[key] = geneset_expression(lh_expression_ds01, value, key, path_result)
     energy_mean_lh[key] = np.mean(energy_exp_lh[key], axis=1)
@@ -87,38 +89,23 @@ for key, value in energy_dict.items():
 energy_mean_lh_df = pd.DataFrame.from_dict(energy_mean_lh, 
                                         orient='columns').reset_index(drop=True)
 
-# keeping only left hemisphere data
-# this sets the right hemisphere data as NaN and lets me plot only the left hemisphere
-# for col in energy_mean_df_lh.columns:
-#     energy_mean_df_lh[col] = energy_mean_df_lh[col].iloc[:200]
-
-# saving
+# save
 with open(path_result + 'energy_expression_matrix_lh.pickle', 'wb') as f:
     pickle.dump(energy_exp_lh, f)
 with open(path_result + 'energy_mean_expression_lh.pickle', 'wb') as f:
     pickle.dump(energy_mean_lh, f)
-with open(path_result + 'energy_pc1_expression_lh.pickle', 'wb') as f:
-    pickle.dump(energy_pc1_lh, f)
 
-# loading
+
+##########
+# analysis
+
+# load expression data
 with open(path_result + 'energy_expression_matrix_lh.pickle', 'rb') as f:
     energy_exp_lh = pickle.load(f)
 with open(path_result + 'energy_mean_expression_lh.pickle', 'rb') as f:
     energy_mean_lh = pickle.load(f)
 with open(path_result + 'energy_pc1_expression_lh.pickle', 'rb') as f:
     energy_pc1_lh = pickle.load(f)
-
-#########################################
-# comparison table for number of genes in gene list vs. ahba
-size_table = pd.DataFrame(index=energy_dict.keys(),
-                          columns=['gene_set', 'ahba'])
-for pathway in energy_dict.keys():
-    # size_table.loc[pathway, 'go'] = len(go_dict[pathway])
-    # size_table.loc[pathway, 'reactome'] = len(reactome_dict[pathway])
-    size_table.loc[pathway, 'gene_set'] = len(energy_dict[pathway])
-    size_table.loc[pathway, 'ahba'] = energy_exp_lh[pathway].shape[1]
-
-size_table.to_csv(path_result+'comparison_table_lh.csv')
 
 
 # plotting mean gene expression for left hemisphere
@@ -128,8 +115,10 @@ for key, value in energy_mean_lh.items():
     # plt.savefig(path_fig+key+'_mean_lh.svg')
     plt.show()
 
+
 ###################################
 # cross correlation of energy maps
+
 # main energy pathways
 main_energy = ['glycolysis', 'ppp', 'tca', 'oxphos', 'lactate']
 energy_mean_lh_df = energy_mean_lh_df[main_energy]
@@ -151,8 +140,9 @@ plt.tight_layout()
 # plt.savefig(path_fig+'pathway_mean_correlation_lh.svg')
 plt.show()
 
-##########################################
+#########################################
 # correlation of energy maps with genepc1
+
 # pc1 computed on only the left hemisphere expression matrix
 pca = PCA(n_components=1)
 genepc1 = np.squeeze(pca.fit_transform(pd.concat(lh_expression_schaefer400).groupby('label').mean()[:200]))

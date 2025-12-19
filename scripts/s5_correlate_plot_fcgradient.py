@@ -1,11 +1,12 @@
 
 '''
 Correlation of energy maps with functional connectivity gradients
+
 Author: Moohebat
 Date: 20/06/2024
 '''
 
-# fc gradients from margulies et al 2016
+# fc gradients are from margulies et al 2016
 # maps are parcellated in neuromaps scripts
 
 # import packages
@@ -14,7 +15,6 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-import colormaps as cmaps
 from scripts.utils import corr_spin_test, plot_schaefer_fsaverage
 from matplotlib.colors import LinearSegmentedColormap
 
@@ -30,12 +30,6 @@ path_fig = './figures/'
 with open(path_result+'energy_mean_expression.pickle', 'rb') as f:
     energy_mean = pickle.load(f)
 
-# again focusing on main energy pathways
-energy_main =['glycolysis', 'ppp', 'tca',
-              'oxphos', 'lactate']
-energy_mean = {key: value for key, value in energy_mean.items() if key in energy_main}
-energy_mean = {key: energy_mean[key] for key in energy_main}
-
 # load spins
 spins10k = np.load(path_data+'spins10k.npy')
 
@@ -43,6 +37,10 @@ spins10k = np.load(path_data+'spins10k.npy')
 fc1_map = np.load(path_data+'fc1_margulies.npy')
 fc2_map = np.load(path_data+'fc2_margulies.npy')
 fc3_map = np.load(path_data+'fc3_margulies.npy')
+
+# focusing on main energy pathways
+energy_main =['glycolysis', 'ppp', 'tca', 'oxphos', 'lactate']
+energy_mean = {key: energy_mean[key] for key in energy_main}
 
 cmap = LinearSegmentedColormap.from_list('custom_cmap', ['lightskyblue', 'white', 'coral'])
 
@@ -65,8 +63,6 @@ for j, (k, v) in enumerate(fc_dict.items()):
     print(j,k)
     for i, (key, value) in enumerate(energy_mean.items()):
         v['pathway'][i] = key
-        # v['r'][i], _, v['pspin'][i] = corr_spin_test(zscore(np.array(com_mean[key])), 
-        #                                                                gradmap.gradients_[:, j], spins1k)
         v['r'][i], _, v['pspin'][i] = corr_spin_test(np.array(energy_mean[key]), 
                                                                        -margul[:, j], spins10k)
 

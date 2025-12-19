@@ -1,6 +1,8 @@
 
 '''
-Visual cortex analysis
+Visual cortex analysis in the Glasser parcellation
+
+Author: Moohebat
 Date: 27/11/2024
 '''
 
@@ -10,14 +12,10 @@ import pickle
 import abagen
 import matplotlib.pyplot as plt
 import seaborn as sns
-import colormaps as cmaps
 import nibabel as nib
 from nibabel import freesurfer
-from neuromaps import images, transforms
 from sklearn.decomposition import PCA
-from nilearn.datasets import fetch_atlas_schaefer_2018
-from scripts.utils import (plot_schaefer_fsaverage, visualize_atlas, 
-                           filter_expression_ds, geneset_expression, 
+from scripts.utils import ( filter_expression_ds, geneset_expression, 
                            glasser_plot, glasser_plot_roi)
 from scipy.stats import zscore
 
@@ -41,11 +39,13 @@ labels_rh, ctab_rh, names_rh = glasser_rh
 # number of unique labels 181, 0 is background
 # number of names 181
 
-################################################
-# getting visual hierarchy data and sorting them
+#########################################
+# get visual hierarchy data and sort them
+
 # files are from neuroimaging core/atlases database
 roi_list = pd.read_csv(path_data+'atlases/HCP-MMP1_UniqueRegionList.csv', )
 roi_list = roi_list[['regionName', 'regionLongName', 'region', 'Lobe', 'cortex', 'LR']]
+
 # make indexes start from 1 to match the glasser labels
 roi_list.index += 1
 roi_list = roi_list.reset_index(names='label')
@@ -62,8 +62,7 @@ vis_roi_lh = vis_roi[:26]
 glasser_bspace = nib.load(path_data+'atlases/glasser360MNI.nii')
 # 360 unique labels, continuous across hemispheres
 
-##########################################
-# this has 360 labels so it should be fine
+# retrieve ahba expression
 glass_exp = abagen.get_expression_data(atlas=path_data+'glasser360MNI.nii',
                                         lr_mirror='bidirectional', 
                                         missing='interpolate', 
@@ -80,7 +79,10 @@ with open(path_data + 'expression_dict_glasser.pickle', 'wb') as f:
 with open(path_data + 'expression_glasser_ds01.pickle', 'wb') as f:
     pickle.dump(glass_exp_ds, f)
 
-############################
+
+######################
+# make energy matrices
+
 # load expression dictionary
 with open(path_data + 'expression_dict_glasser.pickle', 'rb') as f:
     glass_exp = pickle.load(f)
@@ -106,6 +108,7 @@ with open(path_result + 'energy_exp_matrix_glasser.pickle', 'wb') as f:
     pickle.dump(energy_exp, f)
 with open(path_result + 'energy_mean_exp_glasser.pickle', 'wb') as f:
     pickle.dump(energy_mean, f)
+
 
 ##############
 # run analysis
@@ -133,9 +136,10 @@ for pathway in energy_mean.columns:
         plt.show()
 
 
+############
 # oxphos map
 
-# plotting mean gene expression vis_lh only
+# plot mean gene expression vis_lh only
 names_lh_df = pd.DataFrame(names_lh, columns=['roi'])
 
 # get names of regions to drop

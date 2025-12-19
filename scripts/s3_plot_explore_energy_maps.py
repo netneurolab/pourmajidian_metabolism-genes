@@ -1,11 +1,17 @@
 
 '''
-plotting and some initial exploration of energy maps
+Plotting and some initial exploration 
+of energy pathway maps
+
+1. Plot energy maps on brain
+2. Map-map correlations
+3. Correlated gene expression 
+
+
 Author: Moohebat
 Date: 19/06/2024
 '''
 
-#importing packages
 import pickle
 import numpy as np
 import pandas as pd
@@ -13,7 +19,7 @@ import seaborn as sns
 import colormaps as cmaps
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
-from scipy.stats import pearsonr, spearmanr, zscore
+from scipy.stats import zscore
 from scripts.utils import corr_spin_test, pair_corr_spin, plot_schaefer_fsaverage
 import matplotlib.patches as patches
 from netneurotools import plotting
@@ -37,8 +43,7 @@ with open(path_result+'energy_pc1_expression.pickle', 'rb') as f:
 # loading schaefer400 spins
 spins10k = np.load(path_data+'spins10k.npy')
 
-##########
-# plotting
+#
 # plot mean gene expression
 for key, value in energy_mean.items():
     plot_schaefer_fsaverage(zscore(value), cmap=cmaps.matter_r)
@@ -66,16 +71,6 @@ energy_mean_df = energy_mean_df[main_energy]
 # calculate pairwise correlation between maps with spin test
 energy_corr, energy_pspin = pair_corr_spin(energy_mean_df, energy_mean_df, spins10k)
 
-'''
-energy_pspin
-            glycolysis       ppp       tca    oxphos   lactate
-glycolysis    0.000100  0.795320  0.001400  0.000100  0.000100
-ppp           0.786221  0.000100  0.006599  0.909709  0.174183
-tca           0.005000  0.003700  0.000100  0.004500  0.000100
-oxphos        0.000100  0.916708  0.001000  0.000100  0.000100
-lactate       0.000100  0.156284  0.000200  0.000100  0.000100
-'''
-
 # plotting
 plt.figure(figsize=(4,4))
 mask = np.tril(np.ones(energy_mean_df.shape[1]))
@@ -87,7 +82,7 @@ ax = sns.heatmap(energy_corr, annot=True, square=True,
             yticklabels=energy_mean_df.columns,
             vmin=-1, vmax=1, alpha=1)
 
-# # to add significance level
+# # to add significance 
 # for i in range(energy_pspin.shape[0]):
 #     for j in range(energy_pspin.shape[1]):
 #         if mask[i, j] and i != j:
@@ -99,23 +94,49 @@ plt.tight_layout()
 plt.savefig(path_fig+'pathway_mean_correlation.svg')
 plt.show()
 
-##################################
-# gene co-expression and plotting
+#########################################
+# correlated gene expression and plotting
 
-#keeping only main energy pathway expressions
+# keeping only main energy pathway expressions
 energy_exp = {k: energy_exp[k] for k in main_energy}
 
+# concatenate all energy expression matrices
 exp_matrix = pd.concat(energy_exp.values(), axis=1)
-exp_matrix = exp_matrix.loc[:,~exp_matrix.columns.duplicated()]
+
 exp_matrix = exp_matrix.reset_index(drop=True)
 
-#sorted gene co-expression
-i_glyco = np.array([list(exp_matrix.columns).index(i) for i in energy_exp['glycolysis'].columns])
-i_ppp = np.array([list(exp_matrix.columns).index(i) for i in energy_exp['ppp'].columns])
-i_tca = np.array([list(exp_matrix.columns).index(i) for i in energy_exp['tca'].columns])
-i_oxphos = np.array([list(exp_matrix.columns).index(i) for i in energy_exp['oxphos'].columns])
-i_lactate = np.array([list(exp_matrix.columns).index(i) for i in energy_exp['lactate'].columns])
+i_glyco = []
+i_ppp = []
+i_tca = []
+i_oxphos = []
+i_lactate = []
 
+current_idx = 0
+for pathway in main_energy:
+    n_genes = len(energy_exp[pathway].columns)
+    pathway_indices = list(range(current_idx, current_idx + n_genes))
+    
+    if pathway == 'glycolysis':
+        i_glyco = pathway_indices
+    elif pathway == 'ppp':
+        i_ppp = pathway_indices
+    elif pathway == 'tca':
+        i_tca = pathway_indices
+    elif pathway == 'oxphos':
+        i_oxphos = pathway_indices
+    elif pathway == 'lactate':
+        i_lactate = pathway_indices
+    
+    current_idx += n_genes
+
+# convert to numpy arrays
+i_glyco = np.array(i_glyco)
+i_ppp = np.array(i_ppp)
+i_tca = np.array(i_tca)
+i_oxphos = np.array(i_oxphos)
+i_lactate = np.array(i_lactate)
+
+# define classes for communities
 classes = np.zeros((len(exp_matrix.columns), 1))
 classes[i_glyco, 0] = 1
 classes[i_ppp, 0] = 2
@@ -126,25 +147,27 @@ classes[i_lactate, 0] = 6
 # plotting
 class_names = ['glycolysis', 'ppp', 'tca', 'oxphos', 'lactate']
 fig, axs = plt.subplots(1, 1, figsize=(17,17))
-axs = axs.ravel()
-for i in range(1):
-    inds = plotting.sort_communities(np.corrcoef(zscore(exp_matrix).T), classes[:, i], )
-    bounds = plotting._grid_communities(classes[:, i])
-    sns.heatmap(data=np.corrcoef(zscore(exp_matrix).T)[np.ix_(inds, inds)],
-                vmin=-1, vmax=1, ax=axs, cbar=True, square=True, cmap=cmaps.BlueWhiteOrangeRed,
-                linewidths=0, xticklabels=exp_matrix.columns[inds], yticklabels=exp_matrix.columns[inds])
-    for n, edge in enumerate(np.diff(bounds)):
-        axs.add_patch(patches.Rectangle((bounds[n], bounds[n]), 
-                                            edge, edge, fill=False,
-                                            linewidth=2, edgecolor='black'))
+
+inds = plotting.sort_communities(np.corrcoef(zscore(exp_matrix).T), classes[:, 0])
+bounds = plotting._grid_communities(classes[:, 0])
+
+sns.heatmap(data=np.corrcoef(zscore(exp_matrix).T)[np.ix_(inds, inds)],
+            vmin=-1, vmax=1, ax=axs, cbar=True, square=True, cmap=cmaps.BlueWhiteOrangeRed,
+            linewidths=0, xticklabels=exp_matrix.columns[inds], yticklabels=exp_matrix.columns[inds])
+
+for n, edge in enumerate(np.diff(bounds)):
+    axs.add_patch(patches.Rectangle((bounds[n], bounds[n]), 
+                                        edge, edge, fill=False,
+                                        linewidth=2, edgecolor='black'))
 
 plt.tight_layout()
 plt.savefig(path_fig+'energy_correlated_geneexp_communit_sorted.svg')
 plt.show()
 
 
-#######################################################################
+#############################################################
 # correlation of energy maps with pc1 and average expression
+
 with open(path_data+'expression_dict_schaefer400.pickle', 'rb') as f:
     expression_dict_schaefer400 = pickle.load(f)
 
@@ -154,23 +177,15 @@ pca = PCA(n_components=1)
 genepc1 = np.squeeze(pca.fit_transform(expression_schaefer400))
 gene_avg = np.mean(expression_schaefer400, axis=1).reset_index(drop=True)
 
+# correlation with ahba pc1 of gene expression
 r = []
 pspin = []
 for column in energy_mean_df.columns:
         corr, _, p = corr_spin_test(genepc1, energy_mean_df[column], spins10k)
         r.append(corr)
         pspin.append(p)
-        # plt.xlabel('ahba mean expression')
-        # plt.ylabel(key+' mean expression')
-        # plt.tight_layout()
-        # plt.show()
-        # plt.close()
 
-# rho: [-0.15834811467571674, 0.7806969418558866, 0.3502711266945418, 
-# -0.17960718504490655, 0.30114169463559143]
-# pspin: [0.6248375162483751, 9.999000099990002e-05, 0.3604639536046395, 
-# 0.5814418558144185, 0.48325167483251674]
-
+# plot
 plt.figure(figsize=(2.5,2))
 bp = sns.barplot(x=r, y=main_energy, width=0.5, orient='h')
 for i, patch in enumerate(bp.patches):
@@ -191,24 +206,14 @@ plt.show()
 
 
 # correlation with ahba mean gene expression
-
 r = []
 pspin = []
 for column in energy_mean_df.columns:
         corr, _, p = corr_spin_test(gene_avg, energy_mean_df[column], spins10k)
         r.append(corr)
         pspin.append(p)
-        # plt.xlabel('ahba mean expression')
-        # plt.ylabel(key+' mean expression')
-        # plt.tight_layout()
-        # plt.show()
-        # plt.close()
 
-# rho: [0.42176776104850655, 0.13857592859955375, 0.22282433015206343, 
-# 0.37877730485815536, 0.3820829505184407]
-# pspin: [9.999000099990002e-05, 0.3711628837116288, 0.12538746125387462, 
-# 9.999000099990002e-05, 9.999000099990002e-05]
-
+# plot
 plt.figure(figsize=(2.5,2))
 bp = sns.barplot(x=r, y=main_energy, width=0.5, orient='h')
 for i, patch in enumerate(bp.patches):
@@ -229,7 +234,7 @@ plt.show()
 
 
 ##############################################################
-#exploring principal components of energy expression matrices
+# exploring principal components of energy expression matrices
 pca = PCA(n_components=5)
 
 pc_dict = {}
@@ -269,7 +274,7 @@ with open(path_result + 'energy_5pc_dict.pickle', 'wb') as f:
 # 'oxphos': array([55.01795986, 20.89395465,  6.18222829,  3.35700115,  2.45578734])
 # 'lactate': array([49.55962407, 23.66118258,  6.31637238,  4.67088316,  3.99285252])
 
-
+########################
 # plotting the PGD gene
 plot_schaefer_fsaverage(zscore(energy_exp['ppp']['PGD']), cmap=cmaps.matter_r)
 plt.title('PGD')

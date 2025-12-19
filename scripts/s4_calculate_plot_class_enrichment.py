@@ -1,8 +1,9 @@
 
 '''
-distribution of energy maps across
+Distribution of energy maps across
 the microstructural and functional network classes
 including, yeo, von economo and mesulam
+
 Author: Moohebat
 Date: 20/06/2024
 '''
@@ -10,11 +11,10 @@ Date: 20/06/2024
 import pickle
 import numpy as np
 import pandas as pd
-import seaborn as sns
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-from scipy.stats import zscore
-from scripts.utils import class_dist, plot_class_enrichment, class_enrichment
+from netneurotools import plotting
+from scripts.utils import class_enrichment
 
 plt.rcParams['svg.fonttype'] = 'none'
 plt.rcParams.update({'font.size': 8})
@@ -24,16 +24,11 @@ path_data = './data/'
 path_result = './results/'
 path_fig = './figures/'
 
-#############################
+###########
 # load data
 # loading energy pathway data
 with open(path_result+'energy_mean_expression.pickle', 'rb') as f:
     energy_mean = pickle.load(f)
-
-# again focusing on main energy pathways
-energy_main =['glycolysis', 'ppp', 'tca',
-              'oxphos', 'lactate']
-energy_mean = {key: value for key, value in energy_mean.items() if key in energy_main}
 
 # loading class labels
 yeo_schaefer400 = np.load(path_data+'yeo_schaefer400.npy')
@@ -95,6 +90,11 @@ classes = {'yeo':{
 
 ##############
 # run analysis
+
+# again focusing on main energy pathways
+energy_main =['glycolysis', 'ppp', 'tca', 'oxphos', 'lactate']
+energy_mean = {key: value for key, value in energy_mean.items() if key in energy_main}
+
 
 # class enrichment for each network separate
 energy_mean_df = pd.DataFrame.from_dict(energy_mean, 
@@ -160,13 +160,10 @@ pspins:
 
 ############################################
 # plotting brain point plot for each network
-from netneurotools import plotting
-import matplotlib.pyplot as plt
-import matplotlib as mpl
 s_kw = {'cmap' :mpl.colors.ListedColormap(['gainsboro', 'slategray'])}
 
-path = 'D:/McGill/Dagher_lab/Neuroenergetics_project/from_Justine/coordinates/'
-coords = np.genfromtxt(path+'Schaefer_400_centres.txt')[:, 1:] #centroid coordinates
+path = path_data+'data/atlases/schaefer_coords/'
+coords = np.genfromtxt(path+'Schaefer_400_centres.txt')[:, 1:] # centroid coordinates
 
 # yeo
 for i, item in enumerate(np.unique(yeo_schaefer400)):

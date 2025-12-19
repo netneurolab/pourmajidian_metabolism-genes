@@ -4,24 +4,19 @@
 Lifespan trajectories of energy pathway expressions
 1. clean up Brainspan RNA-seq data
 2. plot trajectories
-3. simple stats for samples
+
 Author: Moohebat
 Date: 21/12/2024
 
 '''
 
-# import packages
 import pickle
-import qnorm
 import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-from scipy.stats import zscore
-from sklearn.decomposition import PCA
 
 import rpy2.robjects as robjects
-from rpy2.robjects.packages import importr
 import rpy2.robjects.lib.ggplot2 as ggplot2
 from rpy2.robjects.lib import grdevices
 from rpy2.robjects import pandas2ri
@@ -166,6 +161,7 @@ for i, age in enumerate(sample_data['age']):
     elif 'yrs' in age:
         sample_data.loc[i+1, 'age_days'] = 40 * 7 + float(age.split(' ')[0]) * 12 * 30.43
 
+
 ######################
 # sample data cleanup
 # from now we're focusing on cortical regions
@@ -182,6 +178,7 @@ dropped = list(set(sample_data['structure_acronym']) - set(sample_data2['structu
 # dropped ['PCx', 'M1C-S1C', 'TCx', 'Ocx']
 # 352 cortical samples left
 
+
 ####################
 # expression matrix
 bs_exp = pd.read_csv(path_bs + 'expression_matrix.csv', header=None) 
@@ -190,6 +187,7 @@ bs_exp = bs_exp.iloc[:, 1:] # (52376 gene x 524 sample)
 # gene metadata
 gene_data = pd.read_csv(path_bs + 'rows_metadata.csv', header=0, usecols=['gene_symbol'])
 #52376 genes
+
 
 ###########
 # QC
@@ -263,7 +261,8 @@ df_norm = df_norm.sort_index()
 
 df_norm.to_csv(path_result+'brainspan_exp_rna_uqnorm.csv')
 
-##########################
+
+#################
 # energy analysis
 
 # read brainspan normalzied data
@@ -288,25 +287,6 @@ oxphos_genes = energy_genes['oxphos'][:-14]
 oxphos_genes = np.append(oxphos_genes, atp_genes)
 energy_genes['oxphos'] = oxphos_genes
 
-###############################
-# for ahba harmonized analysis
-with open(path_result+'energy_expression_matrix.pickle', 'rb') as f:
-    energy_exp = pickle.load(f)
-
-# make ahba energy gene list
-energy_genes = {}
-for key, value in energy_exp.items():
-    energy_genes[key] = list(value.columns)
-
-# fix atp genes
-atp_ahba = ['ATP5A1', 'ATP5B', 'ATP5I', 
-            'ATP5J2', 'ATP5F1', 'ATP5J']
-energy_genes['atpsynth'] = atp_ahba
-
-# first 6 are atpsynth genes
-oxphos_ahba = energy_genes['oxphos'][6:]
-oxphos_ahba = np.append(oxphos_ahba, atp_ahba)
-energy_genes['oxphos'] = oxphos_ahba
 
 ################################
 # get energy expression and mean
@@ -319,12 +299,13 @@ for key, value in energy_genes.items():
 # converting mean expression dict to dataframe
 bs_mean_energy_df = (pd.DataFrame.from_dict(bs_mean_energy))
 # add sample info for plotting
-df = pd.concat([sample_data2, bs_mean_energy_df], axis=1)
+df = pd.concat([sample_data, bs_mean_energy_df], axis=1)
 
 #focusing on main energy pathways
 energy_main =['glycolysis', 'ppp', 'tca', 'oxphos', 'lactate', 'kb_util']
 
-#############
+
+############
 # final plot
 fig_size = {'age_group': (8, 5), 'age_group2': (8, 5)}
 widths = {'age_group': 0.4, 'age_group2': 0.4}
@@ -422,59 +403,12 @@ pp.plot()
 grdevices.dev_off()
 
 
-# stripplot version for original age stages
-for category in ['age']:
-    for key in energy_genes.keys():
-        if key in energy_main:
-            plt.figure(figsize=(4, 3))
-            sns.stripplot(
-                data=df,
-                x=category,
-                y=key,
-                s=3,
-                color='sandybrown',
-                edgecolor='grey',
-                linewidth=0.2,
-                alpha=0.9,
-                legend=False, 
-                jitter=True,
-            )
-            plt.ylabel('expression (RPKM)')
-            plt.title(key)
-            plt.xlabel(None)
-            plt.xticks(rotation=90)
-            sns.despine()
-            plt.tight_layout()
-            # plt.savefig(path_fig+key+'_'+ category +'_strip.svg')
-            plt.show()
-
-############################################
-# save summary of brainspan into latex table
-
-num_samples = sample_data.groupby('donor_name').size()
-
-names = ['early_fetal','mid_fetal','late_fetal','infancy', 
-         'early_child','late_child','adolescent','adult']
-
-table = sample_data.groupby('age_group2')['age'].apply(set).reindex(names).reset_index()
-table['age'] = table['age'].apply(sorted)
-num_samples = sample_data.groupby('age_group2').size().reindex(names).reset_index()
-
-table_final = pd.concat([table, num_samples.iloc[:, 1]], axis=1)
-table_final.columns = ['age group', 'age', 'num samples']
-
-latex_table = table_final.to_latex(path_result+'brainspan_summary_rna_compact.tex',
-                              index=False,
-                              caption="", 
-                              label="tab:brainspan_summary",)
-
-
 ################
 # extended maps
 extended_maps = ['complex1', 'complex2',
        'complex3', 'complex4','atpsynth', 
-       'fa_metabolism', 'glycogen_metabolism', 
-       'pdc', 'mas', 'gps', 'creatine', 'ros_detox', 'ros_gen',
+       'fa_metabolism', 'glycogen_metabolism', 'bcaa_cat',
+       'pdc', 'mas', 'gps', 'creatine_kinase', 'ros_detox', 'ros_gen',
        'no_signalling', 'atpase', 'gln_glu_cycle']
 
 
@@ -534,38 +468,6 @@ for category in categories:
     plt.xticks(rotation=rotations[category], ha='right', rotation_mode='anchor')
     plt.savefig(path_fig + category + '_box_line_rpkm_extended_log2zscore.svg')
     plt.show()
-
-
-# smoothed curves
-# convert to long format
-df_long = pd.melt(df, id_vars=['log_age_days'], value_vars=extended_maps, 
-                  var_name='pathway', value_name='expression')
-
-df_long['pathway'] = pd.Categorical(df_long['pathway'], 
-                                    categories=extended_maps, ordered=True)
-
-# make r dataframe
-df_r = pandas2ri.py2rpy(df_long)
-
-# plot
-grdevices.svg(path_fig+"brainspan_geom_loess_extended.svg", width=8, height=6)
-
-pp = (ggplot2.ggplot(df_r) +
-      ggplot2.aes_string(x='log_age_days', y='expression') +
-      ggplot2.geom_point(color='sandybrown', size=1.5, stroke=0,
-                         alpha=0.4,) +
-      ggplot2.geom_smooth(method="loess", se=False, 
-                          color='mediumvioletred', size=0.6) +
-      ggplot2.facet_wrap("~pathway", scales='free') +
-      ggplot2.theme(axis_line=ggplot2.element_line(color='black'),
-                    panel_background=ggplot2.element_blank(),
-                    panel_grid_major=ggplot2.element_blank(),
-                    panel_grid_minor=ggplot2.element_blank()) +
-                    ggplot2.geom_vline(xintercept=np.log10(40*7), 
-                                       color='grey', linetype='dashed', 
-                                       size=0.7, show_legend=False))
-pp.plot()
-grdevices.dev_off()
 
 
 #############################
@@ -672,3 +574,51 @@ for category in categories:
     plt.tight_layout()
     plt.savefig(path_fig + category + '_dev_trajectories_rna.svg')
     plt.show()
+
+
+###################
+# region-wise plots
+
+# r geom smooth plots
+# convert to long format
+df_long = pd.melt(
+    df,
+    id_vars=['log_age_days', 'structure_acronym'],
+    value_vars=energy_main,
+    var_name='pathway',
+    value_name='expression'
+)
+
+df_long['pathway'] = pd.Categorical(df_long['pathway'], categories=energy_main, ordered=True)
+df_long['structure_acronym'] = df_long['structure_acronym'].astype('category')
+
+df_r = pandas2ri.py2rpy(df_long)
+
+# make color map
+n_colors = len(df['structure_acronym'].unique())
+flare_colors = sns.color_palette('flare', n_colors).as_hex()
+flare_r = robjects.StrVector(flare_colors)
+
+# plot
+grdevices.svg(path_fig + "brainspan_geom_loess_regionwise_final.svg", width=9, height=5)
+
+pp = (ggplot2.ggplot(df_r) +
+      ggplot2.aes_string(x='log_age_days', y='expression', group='structure_acronym', color='structure_acronym') +
+      ggplot2.geom_point(size=1.7, alpha=0.3, stroke=0) +
+      ggplot2.geom_smooth(method='loess', se=False, size=0.6) +
+      ggplot2.facet_wrap("~pathway", scales='free') +
+      ggplot2.geom_vline(xintercept=np.log10(40*7), color='grey', linetype='dashed', size=0.6) +
+      ggplot2.scale_color_manual(values=flare_r) +
+      ggplot2.theme_minimal() +
+      ggplot2.theme(
+          legend_position='right',
+          axis_line=ggplot2.element_line(color='black'),
+          axis_ticks=ggplot2.element_line(color='black'),
+          axis_text=ggplot2.element_text(color='black'),
+          panel_background=ggplot2.element_blank(),
+          panel_grid_major=ggplot2.element_blank(),
+          panel_grid_minor=ggplot2.element_blank()
+      ))
+
+pp.plot()
+grdevices.dev_off()

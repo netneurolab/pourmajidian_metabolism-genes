@@ -1,6 +1,10 @@
 
 '''
-energy gene expression in subcortex
+energy pathway gene expression maps
+in the subcortex using the Desikan-Killiany parcellation
+
+Author: Moohebat
+
 '''
 
 import numpy as np
@@ -9,17 +13,11 @@ import abagen
 import pickle
 import nibabel as nib
 import seaborn as sns
-import matplotlib as mpl
-import colormaps as cmaps
 import matplotlib.pyplot as plt
-from neuromaps.images import relabel_gifti
-from neuromaps.transforms import fsaverage_to_fslr
-from netneurotools import datasets, plotting, utils
 from enigmatoolbox.datasets import load_summary_stats
-from enigmatoolbox.utils.parcellation import parcel_to_surface
-from enigmatoolbox.plotting import plot_cortical, plot_subcortical
-from scipy.stats import spearmanr, zscore
-from scripts.utils import corr_spin_test, geneset_expression
+from enigmatoolbox.plotting import plot_subcortical
+from scipy.stats import zscore
+from scripts.utils import geneset_expression
 
 plt.rcParams['svg.fonttype'] = 'none'
 plt.rcParams.update({'font.size': 8})
@@ -32,6 +30,7 @@ path_fig = './figures/'
 # load energy gene sets
 with open(path_result+'energy_genelist_dict.pickle', 'rb') as f:
     energy_genes = pickle.load(f)
+
 
 ############################################################
 # fixing label order mismatch between enigma and abagen's dk
@@ -52,8 +51,10 @@ np.unique(nib.load(dk['image']).get_fdata()) # 84, zero is background
 # labels
 dk_labels = pd.read_csv(dk['info'])
 sctx_labels = dk_labels[dk_labels['structure']!='cortex'] # 15 rois
+
 #dropping brainstem
 sctx_labels = sctx_labels[sctx_labels['label'] != 'brainstem'] #14 rois
+
 sctx_labels_L = sctx_labels[sctx_labels['hemisphere']=='L'] # 7 rois
 sctx_labels_R = sctx_labels[sctx_labels['hemisphere']=='R'] # 7 rois
 
@@ -91,12 +92,10 @@ with open(path_data + 'expression_dict_dk.pickle', 'wb') as f:
 with open(path_data + 'expression_dk_ds01.pickle', 'wb') as f:
     pickle.dump(expression_dk_ds, f)
 
-diff_stable = {'gene': np.array(expression_dk['15496'].columns), 'ds': ds01}
-diff_stable = pd.DataFrame(diff_stable)
-diff_stable.to_csv(path_result+'gene_ds_all_dk.csv')
 
 #################
 # energy analysis
+
 # load dk expression
 with open(path_data + 'expression_dk_ds01.pickle', 'rb') as f:
     expression_dk_ds = pickle.load(f)
@@ -124,8 +123,8 @@ for key, value in energy_mean_sctx.items():
                         # filename=path_fig+key+'_sctx.svg',
                         transparent_bg=False,)
 
-##########
-# barplot
+
+# grouped barplot
 energy_main_sctx = pd.DataFrame(energy_mean_sctx)[energy_main].reset_index(drop=True)
 energy_main_sctx['labels'] = sctx_labels_sorted['label'].reset_index(drop=True)
 
@@ -134,7 +133,6 @@ energy_main_sctx_lh = energy_main_sctx.iloc[:7, :]
 #zscore
 energy_main_sctx_lh.iloc[:, :5] = zscore(energy_main_sctx_lh.iloc[:, :5], axis=0)
 
-# grouped barplot
 energy_long = pd.melt(energy_main_sctx_lh, 
                       id_vars=['labels'],
                       value_vars=energy_main,

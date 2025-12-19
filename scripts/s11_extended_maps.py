@@ -1,11 +1,16 @@
+
 '''
 script running all analysis for
 the extended energy pathway maps
 
+1. Plot brain maps in schaefer-400
+2. Cross-correlation matrix
+3. Clustering
+
 Author: Moohebat
 Date: 21/07/2024
 '''
-# brainspan analysis of extended maps is in the brainspan script.
+# for brainspan analysis of extended maps see s8_brainspan_rna.py
 
 #importing packages
 import pickle
@@ -15,8 +20,10 @@ import seaborn as sns
 import colormaps as cmaps
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
-from scipy.stats import spearmanr, zscore
-from scripts.utils import corr_spin_test, pair_corr_spin, plot_schaefer_fsaverage
+from scipy.stats import zscore
+from statsmodels.stats.multitest import multipletests
+from scripts.utils import plot_heatmap, pair_corr_spin, plot_schaefer_fsaverage
+
 plt.rcParams['svg.fonttype'] = 'none'
 plt.rcParams.update({'font.size': 8})
 
@@ -25,7 +32,7 @@ path_data = './data/'
 path_result = './results/'
 path_fig = './figures/'
 
-# loading energy pathway data
+# load energy pathway data
 with open(path_result+'energy_expression_matrix.pickle', 'rb') as f:
     energy_exp = pickle.load(f)
 with open(path_result+'energy_mean_expression.pickle', 'rb') as f:
@@ -33,28 +40,32 @@ with open(path_result+'energy_mean_expression.pickle', 'rb') as f:
 with open(path_result+'energy_pc1_expression.pickle', 'rb') as f:
     energy_pc1 = pickle.load(f)
 
-# loading schaefer400 spins
-spins1k = np.load(path_data+'spins1k.npy')
+# load schaefer400 spins
+spins10k = np.load(path_data+'spins10k.npy')
 
-# plot all energy maps
-# plotting mean gene expression
+# plot mean gene expression
 for key, value in energy_mean.items():
     plot_schaefer_fsaverage(zscore(value), cmap=cmaps.matter_r)
     plt.title(key)
     plt.savefig(path_fig+key+'_mean.svg', dpi=600)
     plt.show()
 
+
 # cross correlation of all energy maps
 # convert dict to dataframe
 energy_mean_df = pd.DataFrame(energy_mean).reset_index(drop=True)
-# drop redundant pathway maps
-energy_df = energy_mean_df.drop(['etc', 'lactate_metabolism',
-                                      'lactate_transport', 'kb_synth', 
-                                      'kb_metabolism', 'fa_synth', 'betaox',
-                                      'glycogen_synth', 'glycogen_cat',
-                                      'pdp', 'pdk', 'pc'], axis=1)
 
-################################
+# keep non-redundant maps
+extended_maps = ['glycolysis', 'ppp', 'tca', 'oxphos', 'lactate',
+                 'complex1', 'complex2', 'complex3', 'complex4','atpsynth', 
+                 'kb_util', 'fa_metabolism', 'glycogen_metabolism', 'bcaa_cat',
+                 'pdc', 'mas', 'gps', 'creatine_kinase', 'ros_detox', 'ros_gen',
+                 'no_signalling', 'atpase', 'gln_glu_cycle']
+
+energy_df = energy_mean_df[extended_maps]
+
+
+
 # check if maps show clustering
 pca = PCA(n_components=2)
 pca_exp = pca.fit_transform(zscore(energy_df.T))
@@ -78,44 +89,59 @@ plt.tight_layout()
 plt.savefig(path_fig+'energy_pca_clustering.svg')
 plt.show()
 
-####################
-#louvain clustering
-import bct
-from netneurotools import plotting, cluster
-from netneurotools.modularity import consensus_modularity
 
-corr = energy_df.corr('spearman')
+##################################
+# extended maps correlation matrix
 
-def community_detection(A, gamma_range):
-    nnodes = len(A)
-    ngamma = len(gamma_range)
-    consensus = np.zeros((nnodes, ngamma))
-    qall = []
-    zrand = []
-    i = 0
-    for g in gamma_range:
-        consensus[:, i], q, z = consensus_modularity(A, g, B='negative_asym', 
-                                                     repeats=1000)
-        qall.append(q)
-        zrand.append(z)
-        i += 1
-    return (consensus, qall, zrand)
+# simple
+correlations = energy_df.corr('spearman')
+plt.figure(figsize=(7,7))
+sns.heatmap(correlations,
+                cmap=cmaps.BlueWhiteOrangeRed,
+                cbar=True,
+                square=True,
+                vmin=-1, vmax=1,
+                linewidths=0.3,
+                linecolor='lightgrey',
+                cbar_kws={'shrink': 0.4, 'aspect':10, 'ticks': [-1, 0, 1]},
+                )
 
-gamma_range = [x/10.0 for x in range(1, 21, 1)]
-consensus, qall, zrand = community_detection(corr.values, gamma_range)
+plt.tight_layout()
+plt.savefig(path_fig+'energy_extended_corrs.svg')
+plt.show()
 
-for i in range(len(gamma_range)):
-    plotting.plot_mod_heatmap(corr.values, np.squeeze(consensus[:, i]), 
-                            vmin=-1, vmax=1,
-                            xticklabels=corr.index,
-                            yticklabels=corr.index,
-                            mask_diagonal=False,
-                            cmap=cmaps.BlueWhiteOrangeRed, 
-                            square=True,)
-    plt.title('gamma'+ str(gamma_range[i]))
-    plt.tight_layout()
-    plt.savefig(path_fig+'clustering_louvain_gamma'+str(gamma_range[i])+'.svg')
-    plt.show()
+# with spin
+extended_corrs, extended_pspins = pair_corr_spin(energy_df, energy_df, spins10k)
+
+extended_corrs.to_csv(path_result+'extended_corrs.csv')
+extended_pspins.to_csv(path_result+'extended_pspins.csv')
+
+# fdr correction for multiple testing
+model_pval = multipletests(extended_pspins.values.flatten(), method='fdr_bh')[1]
+model_pval = pd.DataFrame(model_pval.reshape(23,23))
+model_pval.columns = extended_pspins.columns
+model_pval.index  = extended_pspins.index
+
+model_pval.to_csv(path_result+'extended_pspins_fdr_pval.csv')
+
+# plot
+plot_heatmap(extended_corrs, model_pval, asteriks=False,
+             edge=True,
+             square=True,)
+plt.savefig(path_fig+'extended_maps_corr_heatmap_pspin.svg')
+plt.show()
+
+
+# sns hierarchical clustering
+# extended nergy pathways clustermap, 400-region wise
+g = sns.clustermap(energy_df.T,
+                    cmap=cmaps.matter_r,
+                    cbar=True,
+                    col_cluster=False,
+                    figsize=(5, 7),)
+plt.tight_layout()
+plt.savefig(path_fig+'energy_pathway_clustermap_regions.svg')
+plt.show()
 
 
 ##########################

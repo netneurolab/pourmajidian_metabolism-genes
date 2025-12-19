@@ -1,12 +1,12 @@
  
 '''
-functions used throughout the analyses, inludes:
-retrieving gene expression
-plotting
+Functions used throughout the analyses, inludes:
+retrieving gene expression and filtering by gene set
+plotting on the brain
 spin tests on correlations
-enrichment
+class distribution
 
-@author: moohebat pe
+Author: Moohebat
 '''
 
 import abagen
@@ -17,20 +17,19 @@ import matplotlib.pyplot as plt
 from netneurotools import datasets
 from netneurotools.freesurfer import parcels_to_vertices
 from neuromaps.datasets import fetch_fsaverage
-import nibabel as nib
 from nibabel import freesurfer
 from nilearn.datasets import fetch_atlas_schaefer_2018
 import numpy as np
 import pandas as pd
-from scipy.stats import pearsonr, spearmanr, zscore
+from scipy.stats import spearmanr, zscore
 import seaborn as sns
 from surfplot import Plot
-
 
 plt.rcParams["svg.fonttype"] = "none"
 plt.rcParams.update({"font.size": 8})
 
 path_data = './data/'
+
 
 def load_expression(scale):
 
@@ -43,6 +42,7 @@ def load_expression(scale):
                                             missing='interpolate', 
                                             return_donors=True)
     return expression
+
 
 
 def filter_expression_ds(expression, ds):
@@ -61,6 +61,7 @@ def filter_expression_ds(expression, ds):
     expression_ds = pd.concat(rexpression).groupby('label').mean()
 
     return expression_ds, diff_stability
+
 
 
 def geneset_expression(expression, gene_list, filename, outpath, save=False):
@@ -94,6 +95,7 @@ def load_expression_lh(scale):
     return expression
 
 
+
 def dk_plot(data):
     '''
     plot brain map in desikian-killiany parcellation
@@ -111,6 +113,7 @@ def dk_plot(data):
     fig.show()
 
 
+
 def plot_schaefer_fsaverage(data, hemi=None, cmap = 'plasma', resolution=400):
     '''
     function to plot parcellated schaefer data onto fsaverage surface
@@ -122,9 +125,11 @@ def plot_schaefer_fsaverage(data, hemi=None, cmap = 'plasma', resolution=400):
         scale = '400Parcels7Networks'
     elif resolution == 100:
         scale = '100Parcels7Networks'
+    elif resolution == 600:
+        scale = '600Parcels7Networks'
     
     # fetch schaefer parcellation files
-    schaefer = datasets.fetch_schaefer2018('fsaverage')[scale]
+    schaefer = datasets.fetch_schaefer2018('fsaverage')[str(resolution)+'Parcels7Networks']
 
     # convert parcellated data into vertex-wise data
     x = parcels_to_vertices(data, lhannot=schaefer.lh, rhannot=schaefer.rh)
@@ -151,28 +156,6 @@ def plot_schaefer_fsaverage(data, hemi=None, cmap = 'plasma', resolution=400):
     # fig.show()
 
 
-def visualize_atlas(labels_lh, labels_rh):
-    import numpy as np
-    from neuromaps.datasets import fetch_fsaverage
-    from surfplot import Plot
-    import colormaps as cmaps
-    
-    # Combine left and right hemisphere labels (already loaded from the annot files)
-    labeling = np.concatenate((labels_lh, labels_rh))
-
-    # Fetch fsaverage surfaces
-    surfaces = fetch_fsaverage(density='164k')
-    lh, rh = surfaces['inflated']
-
-    # Initialize the plot
-    p = Plot(surf_lh=lh, surf_rh=rh)
-
-    # Plot the atlas labels directly
-    p.add_layer(labeling, cmap='tab20', cbar=False)
-    p.add_layer(labeling, as_outline=True, cbar=False, cmap='gray')
-    fig = p.build(figsize=(4, 4))
-    plt.show()
-
 
 def glasser_plot(data, hemi=None, color=cmaps.matter_r, 
                  outline=True, outlinecolor='gray', 
@@ -180,10 +163,6 @@ def glasser_plot(data, hemi=None, color=cmaps.matter_r,
                  color_range=None, brightness=None,
                  views=['lateral', 'medial', 'dorsal', 'ventral', 'posterior'],
                  interactive=False):
-
-    from surfplot import Plot
-    from neuromaps.datasets import fetch_fsaverage
-    from netneurotools.freesurfer import parcels_to_vertices
 
     #loading fsaverage 164k surface
     surfaces = fetch_fsaverage(density='164k')
@@ -214,6 +193,7 @@ def glasser_plot(data, hemi=None, color=cmaps.matter_r,
     # p.show() gives you the interactive mode
     if interactive:
         p.show()
+
 
 
 def glasser_plot_roi(data, hemi=None, color=cmaps.matter_r, 
@@ -269,6 +249,7 @@ def glasser_plot_roi(data, hemi=None, color=cmaps.matter_r,
     return fig, map
 
 
+
 def corr_spin_test(data, map, spins, 
                    scattercolor='sandybrown', 
                    linecolor='grey', 
@@ -309,6 +290,8 @@ def corr_spin_test(data, map, spins,
     return corr, corr_null, p_spin
 
 
+
+
 def pair_corr_spin(x, y, spins):
     '''
     calculate pairwise correlation between 
@@ -324,6 +307,7 @@ def pair_corr_spin(x, y, spins):
                                                                                       spins,
                                                                                       plot=False)
     return corr_df, pspin_df
+
 
 
 def plot_heatmap(corr_df, pspin_df, 
@@ -375,50 +359,6 @@ def plot_heatmap(corr_df, pspin_df,
     plt.tight_layout()
     # plt.show()
 
-
-def class_dist(data, spins, class_labels):
-    '''
-    data should be (400,)
-    class_labels (400,)
-    '''
-    data_class = dict()
-    pval_class = dict()
-    null_class = dict()
-    nspins =spins.shape[1]
-
-    for item in np.unique(class_labels):
-        # get empirical mean for each class
-        mask = (class_labels == item)
-        data_class[item] = np.mean(data[mask])
-
-        #create null distribution for mean in each class
-        null = np.zeros([nspins,])
-        for i in range(nspins):
-            data_null = np.array(data[spins[:, i]])
-            null[i]= np.mean(data_null[mask])
-        null_class[item] = np.array(null)
-
-        #calculate p_spin
-        pval_class[item] = (1 + np.sum(np.abs((null - np.mean(null)))
-                        >= abs((np.mean(data[mask]) - np.mean(null))))) / (nspins + 1)
-        
-    null_df = pd.DataFrame(null_class).reset_index(drop=True)
-
-    return data_class, null_df, pval_class
-
-
-def plot_class_enrichment(data_class, null_df, pval_class, order=None):
-
-    if order != None:
-        data_class = {key: data_class[key] for key in order}
-        pval_class = {key: pval_class[key] for key in order}
-    
-    colors = ['coral' if pval_class[key] < 0.05 else 'lightgrey' for key in data_class.keys()]
-
-    bars = plt.bar(data_class.keys(), data_class.values(), color=colors, alpha=0.8)
-    
-    sns.despine()
-    return bars
 
 
 def class_enrichment(map, class_labels, spins, order, outpath, filename):

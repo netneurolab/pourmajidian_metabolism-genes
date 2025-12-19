@@ -1,26 +1,21 @@
 
 '''
-retrieve and parcellate pet, meg and fc maps from neuromaps
+Retrieve and parcellate PET, MEG and FC gradient
+maps from neuromaps
+
 Author: Moohebat
 Date: 26/06/2024
 '''
 
-# import packages
 import pickle
 import numpy as np
 import pandas as pd
-import nilearn as ni
-import nibabel as nib
-import matplotlib.pyplot as plt
-import seaborn as sns
-from scipy.stats import zscore
 from netneurotools import datasets as nntdata
-from nilearn.datasets import fetch_atlas_schaefer_2018
 from neuromaps.datasets.contributions import available_annotations
 from neuromaps.datasets import fetch_annotation
 from neuromaps.parcellate import Parcellater
-from neuromaps.images import dlabel_to_gifti, construct_shape_gii, load_nifti
-from neuromaps.transforms import fslr_to_fslr, mni152_to_fslr, fsaverage_to_fslr, mni152_to_fsaverage
+from neuromaps.images import dlabel_to_gifti
+from neuromaps.transforms import fslr_to_fslr
 
 # path to directories
 path_data = './data/'

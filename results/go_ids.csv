@@ -14,3 +14,4 @@ ketone body utilization,GO:0046952,ketone body catabolic process
 fa metabolism,GO:0006631,fatty acid metabolic process
 glycogen metabolism,GO:0005977,glycogen metabolic process
 ros gen,GO:1903409,reactive oxygen species biosynthetic process
+bcaa catabolism,GO:0009083,branched-chain amino acid catabolic process

@@ -1,7 +1,11 @@
 
 '''
-prepare layer- and cell-specific markers
-from wagstyl 2023 cartography paper
+Prepare layer- and cell-specific marker genes
+from wagstyl 2023 cartography paper and 
+make expression maps for each cell-type
+
+Author: Moohebat
+
 '''
 
 import numpy as np

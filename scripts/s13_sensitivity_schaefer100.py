@@ -1,7 +1,9 @@
 
 '''
-Sensitivity robustness analysis
-Using schaefer100 parcellation
+Sensitivity analysis
+Recreating the energy maps using 
+the schaefer100 parcellation
+
 Author: Moohebat
 Date: 17/09/2024
 '''
@@ -15,13 +17,12 @@ Date: 17/09/2024
 import numpy as np
 import pandas as pd
 import pickle
-import abagen
 import seaborn as sns
 import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 import colormaps as cmaps
 from sklearn.decomposition import PCA
-from scipy.stats import zscore, spearmanr
-from nilearn.datasets import fetch_atlas_schaefer_2018
+from scipy.stats import zscore
 from scripts.utils import (plot_schaefer_fsaverage, corr_spin_test, 
                            load_expression, filter_expression_ds, 
                            geneset_expression)
@@ -33,21 +34,24 @@ path_fig = './figures/'
 path_all= './results/energy_sets/all_pathways/'
 
 # loading schaefer100 spins
-spins1k = np.load(path_data+'spins1k_schaefer100.npy')
 spins10k = np.load(path_data+'spins10k_schaefer100.npy')
+
+#######
+# setup
 
 # load expression data for schaefer100 parcellation
 expression_schaefer100 = load_expression(scale=100)
 # 100 regions x 15633 genes
 
-# save left hemisphere expression dict for filtering
+# save
 with open(path_data + 'expression_dict_schaefer100.pickle', 'wb') as f:
     pickle.dump(expression_schaefer100, f)
-# load left hemisphere expression
+
+# load
 with open(path_data + 'expression_dict_schaefer100.pickle', 'rb') as f:
     expression_schaefer100 = pickle.load(f)
 
-# keeping genes with ds>0.1 and only the left hemisphere rows
+# keeping genes with ds>0.1
 expression100_ds01 = filter_expression_ds(expression_schaefer100, 
                                           ds=0.1)
 # dataframe of 100 x 10832
@@ -60,12 +64,11 @@ with open(path_data + 'expression100_ds01.pickle', 'wb') as f:
 with open(path_data + 'expression100_ds01.pickle', 'rb') as f:
     expression100_ds01 = pickle.load(f)
 
-##################################
 # load energy gene sets dictionary
 with open(path_result + 'energy_genelist_dict.pickle', 'rb') as f:
     energy_dict = pickle.load(f)
 
-# retrieving energy expression matrices
+# make energy expression matrices
 pca = PCA(n_components=1)
 
 energy_exp_100 = {}
@@ -86,6 +89,10 @@ with open(path_result + 'energy_mean_expression_100.pickle', 'wb') as f:
 with open(path_result + 'energy_pc1_expression_100.pickle', 'wb') as f:
     pickle.dump(energy_pc1_100, f)
 
+
+##########
+# analysis
+
 # load
 with open(path_result + 'energy_expression_matrix_100.pickle', 'rb') as f:
     energy_exp_100 = pickle.load(f)
@@ -98,20 +105,7 @@ with open(path_result + 'energy_pc1_expression_100.pickle', 'rb') as f:
 energy_mean_df = pd.DataFrame.from_dict(energy_mean_100, 
                                         orient='columns').reset_index(drop=True)
 
-#########################################
-# comparison table for number of genes in gene list vs. ahba
-size_table = pd.DataFrame(index=energy_dict.keys(),
-                          columns=['gene_set', 'ahba'])
-for pathway in energy_dict.keys():
-    # size_table.loc[pathway, 'go'] = len(go_dict[pathway])
-    # size_table.loc[pathway, 'reactome'] = len(reactome_dict[pathway])
-    size_table.loc[pathway, 'gene_set'] = len(energy_dict[pathway])
-    size_table.loc[pathway, 'ahba'] = energy_exp_100[pathway].shape[1]
 
-size_table.to_csv(path_result+'comparison_table_100.csv')
-
-##########
-# analysis
 # main energy pathways
 main_energy = ['glycolysis', 'ppp', 'tca', 'oxphos', 'lactate']
 energy_mean_df = energy_mean_df[main_energy]
@@ -154,16 +148,40 @@ plt.show()
 energy_exp_100 = {k: energy_exp_100[k] for k in main_energy}
 
 exp_matrix_100 = pd.concat(energy_exp_100.values(), axis=1)
-exp_matrix_100 = exp_matrix_100.loc[:,~exp_matrix_100.columns.duplicated()]
 exp_matrix_100 = exp_matrix_100.reset_index(drop=True)
 
-#sorted gene co-expression
-i_glyco = np.array([list(exp_matrix_100.columns).index(i) for i in energy_exp_100['glycolysis'].columns])
-i_ppp = np.array([list(exp_matrix_100.columns).index(i) for i in energy_exp_100['ppp'].columns])
-i_tca = np.array([list(exp_matrix_100.columns).index(i) for i in energy_exp_100['tca'].columns])
-i_oxphos = np.array([list(exp_matrix_100.columns).index(i) for i in energy_exp_100['oxphos'].columns])
-i_lactate = np.array([list(exp_matrix_100.columns).index(i) for i in energy_exp_100['lactate'].columns])
+i_glyco = []
+i_ppp = []
+i_tca = []
+i_oxphos = []
+i_lactate = []
 
+current_idx = 0
+for pathway in main_energy:
+    n_genes = len(energy_exp_100[pathway].columns)
+    pathway_indices = list(range(current_idx, current_idx + n_genes))
+    
+    if pathway == 'glycolysis':
+        i_glyco = pathway_indices
+    elif pathway == 'ppp':
+        i_ppp = pathway_indices
+    elif pathway == 'tca':
+        i_tca = pathway_indices
+    elif pathway == 'oxphos':
+        i_oxphos = pathway_indices
+    elif pathway == 'lactate':
+        i_lactate = pathway_indices
+    
+    current_idx += n_genes
+
+
+i_glyco = np.array(i_glyco)
+i_ppp = np.array(i_ppp)
+i_tca = np.array(i_tca)
+i_oxphos = np.array(i_oxphos)
+i_lactate = np.array(i_lactate)
+
+# define classes
 classes = np.zeros((len(exp_matrix_100.columns), 1))
 classes[i_glyco, 0] = 1
 classes[i_ppp, 0] = 2
@@ -172,26 +190,26 @@ classes[i_oxphos, 0] = 5
 classes[i_lactate, 0] = 6
 
 # plotting
-import matplotlib.patches as patches
-from netneurotools import plotting
 class_names = ['glycolysis', 'ppp', 'tca', 'oxphos', 'lactate']
 plt.rcParams.update({'font.size': 8})
 fig, axs = plt.subplots(1, 1, figsize=(17,17))
-axs = axs.ravel()
-for i in range(1):
-    inds = plotting.sort_communities(np.corrcoef(zscore(exp_matrix_100).T), classes[:, i])
-    bounds = plotting._grid_communities(classes[:, i])
-    sns.heatmap(data=np.corrcoef(zscore(exp_matrix_100).T)[np.ix_(inds, inds)],
-                vmin=-1, vmax=1, ax=axs, cbar=True, square=True, cmap=cmaps.BlueWhiteOrangeRed,
-                linewidths=0, xticklabels=exp_matrix_100.columns[inds], yticklabels=exp_matrix_100.columns[inds])
-    for n, edge in enumerate(np.diff(bounds)):
-        axs.add_patch(patches.Rectangle((bounds[n], bounds[n]), 
-                                            edge, edge, fill=False,
-                                            linewidth=4, edgecolor='black'))
+
+inds = plotting.sort_communities(np.corrcoef(zscore(exp_matrix_100).T), classes[:, 0])
+bounds = plotting._grid_communities(classes[:, 0])
+
+sns.heatmap(data=np.corrcoef(zscore(exp_matrix_100).T)[np.ix_(inds, inds)],
+            vmin=-1, vmax=1, ax=axs, cbar=True, square=True, cmap=cmaps.BlueWhiteOrangeRed,
+            linewidths=0, xticklabels=exp_matrix_100.columns[inds], yticklabels=exp_matrix_100.columns[inds])
+
+for n, edge in enumerate(np.diff(bounds)):
+    axs.add_patch(patches.Rectangle((bounds[n], bounds[n]), 
+                                        edge, edge, fill=False,
+                                        linewidth=4, edgecolor='black'))
 
 plt.tight_layout()
 plt.savefig(path_fig+'energy_coexpression_communit_sorted_100.svg')
 plt.show()
+
 
 ################################################
 # correlation of energy maps with pc1 expression

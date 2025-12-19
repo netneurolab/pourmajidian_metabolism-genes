@@ -1,20 +1,19 @@
 
 '''
-calculating sc and fc connectivity measures
+Calculate the SC and FC connectivity measures
+using the bctpy package
+
 Author: Moohebat
 Date: 28/06/2024
 '''
-# import packages
+
 import pickle
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from scipy.stats import pearsonr, zscore
 from nilearn.datasets import fetch_atlas_schaefer_2018
 from bct import degree, centrality, distance, clustering
-from netneurotools import datasets, utils, plotting
 from scipy.spatial.distance import squareform, pdist
-from scripts.utils import plot_schaefer_fsaverage
 
 plt.rcParams['svg.fonttype'] = 'none'
 plt.rcParams.update({'font.size': 8})
@@ -31,7 +30,10 @@ for row in range(len(schaefer400['labels'])):
     rsn_mapping.append(schaefer400['labels'][row].decode('utf-8').split('_')[2])
 rsn_mapping = np.array(rsn_mapping)
 
-############
+
+#############
+# sc measures
+
 # binary sc
 sc = np.load(path_data+'consensusSC.npy')
 
@@ -62,8 +64,9 @@ sc_df = pd.DataFrame(sc_attr, columns=['euc_dist', 'sc_degree',
 
 #####################
 # fc network measure
+
 fc = np.load(path_data+'haemodynamic_connectivity.npy')
-# strength is the sum of weights of edges connected to the node
+
 fc_strength = degree.strengths_und(abs(fc)).reshape(-1, 1)
 fc_between = centrality.betweenness_wei(abs(1/fc)).reshape(-1, 1)
 fc_cluster = clustering.clustering_coef_wu(abs(fc)).reshape(-1, 1)
@@ -83,3 +86,9 @@ fc_df = pd.DataFrame(fc_attr, columns=['fc_strength', 'fc_betweenness',
                                             'fc_clustering', 'fc_participation',
                                             'fc_spath', 'fc_strength_pos',
                                             'fc_partic_pos'])
+
+# save
+conn_df = pd.concat([sc_df, fc_df], axis=1)
+
+with open(path_data + 'conn_df.pickle', 'wb') as f:
+    pickle.dump(conn_df, f)
