@@ -55,12 +55,11 @@ with open(path_data + 'lh_expression_dict_schaefer400.pickle', 'rb') as f:
     lh_expression_schaefer400 = pickle.load(f)
 
 # keeping genes with ds>0.1
-lh_expression_ds01 = filter_expression_ds(lh_expression_schaefer400, 
+lh_expression_ds01, _ = filter_expression_ds(lh_expression_schaefer400, 
                                           ds=0.1)
 # dataframe of 400 x 8376
 
 # save
-path_data = 'D:/McGill/Dagher_lab/my_neuro_project/project_data/'
 with open(path_data + 'lh_expression_ds01.pickle', 'wb') as f:
     pickle.dump(lh_expression_ds01, f)
 

@@ -19,8 +19,7 @@ path_fig = './figures/'
 ###############################
 # create spins for schaefer 400
 
-path = 'D:/McGill/Dagher_lab/Neuroenergetics_project/from_Justine/coordinates/'
-coords = np.genfromtxt(path+'Schaefer_400_centres.txt')[:, 1:] #centroid coordinates
+coords = np.genfromtxt(path_data+'atlases/schaefer_coords/Schaefer_400_centres.txt')[:, 1:] #centroid coordinates
 nnodes = coords.shape[0]
 hemiid = np.zeros((nnodes,))
 hemiid[:int(nnodes/2)] = 1
@@ -37,8 +36,7 @@ spins10k = stats.gen_spinsamples(coords, hemiid, n_rotate=nspins10k, seed=42, me
 
 ##################################
 #create spins for for schaefer 100
-path = 'D:/McGill/Dagher_lab/Neuroenergetics_project/from_Justine/coordinates/'
-coords = np.genfromtxt(path+'Schaefer_100_centres.txt')[:, 1:]
+coords = np.genfromtxt(path_data+'atlases/schaefer_coords/Schaefer_100_centres.txt')[:, 1:]
 nnodes = coords.shape[0]
 hemiid = np.zeros((nnodes,))
 hemiid[:int(nnodes/2)] = 1

@@ -313,7 +313,7 @@ def pair_corr_spin(x, y, spins):
 def plot_heatmap(corr_df, pspin_df, 
                  linecolor='white', linewidths=0.3,
                  asteriks=True, edge=False,
-                 annot=False):
+                 annot=False, square=True):
     '''
     plot correlation heatmap with significance
     '''
@@ -325,7 +325,7 @@ def plot_heatmap(corr_df, pspin_df,
                                'ticks': [-1.00, 0.0, 1.00], 
                                'pad': 0.02},
                     linewidths=linewidths, linecolor=linecolor,
-                    fmt='.2f')
+                    fmt='.2f', square=square)
     if asteriks:
     # asteriks for significant ones
         for i in range(pspin_df.shape[0]):

@@ -1,0 +1,28 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Mapping energy metabolism pathways in the human brain
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Moohebat
+    family-names: Pourmajidian
+    email: moohebat.pourmajidian@mail.mcgill.ca
+    affiliation: McGill University
+  - given-names: 'Justine '
+    name-particle: 'Y'
+    family-names: Hansen
+  - given-names: Golia
+    family-names: Shafiei
+  - given-names: Bratislav
+    family-names: Misic
+  - given-names: Alain
+    family-names: Dagher
+identifiers:
+  - type: doi
+    value: 10.1371/journal.pbio.3003619
+repository-code: 'https://github.com/muhikp/pourmajidian_metabolism-genes'
+license: BSD-3-Clause

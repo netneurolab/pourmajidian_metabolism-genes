@@ -20,6 +20,7 @@ import pickle
 import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+from netneurotools import plotting
 import colormaps as cmaps
 from sklearn.decomposition import PCA
 from scipy.stats import zscore
@@ -52,7 +53,7 @@ with open(path_data + 'expression_dict_schaefer100.pickle', 'rb') as f:
     expression_schaefer100 = pickle.load(f)
 
 # keeping genes with ds>0.1
-expression100_ds01 = filter_expression_ds(expression_schaefer100, 
+expression100_ds01, _ = filter_expression_ds(expression_schaefer100, 
                                           ds=0.1)
 # dataframe of 100 x 10832
 

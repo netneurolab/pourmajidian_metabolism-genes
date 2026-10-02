@@ -44,7 +44,6 @@ diff_stable = pd.DataFrame(diff_stable)
 diff_stable.to_csv(path_result+'gene_ds_all.csv')
 
 # save
-path_data = 'D:/McGill/Dagher_lab/my_neuro_project/project_data/'
 with open(path_data + 'expression_ds01.pickle', 'wb') as f:
     pickle.dump(expression_ds01, f)
 
